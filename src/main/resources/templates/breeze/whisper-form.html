@@ -11,6 +11,7 @@
         }
         #child2 {
             background-color: lightgreen;
+            text-align: center; /* ボタンを中央に配置 */
         }
         #child3 {
             bottom: 0; /* 下端に配置 */
@@ -20,6 +21,10 @@
         }
         button {
             padding: 10px;
+        }
+        textarea {
+            resize: none;
+            margin: 10px;
         }
 
         @media (min-width: 600px) {
@@ -57,22 +62,21 @@
                 </form>
             </div>
             <div id="child2">
-                <table  class="whisper">
-                    <tbody>
-                        <tr th:each="Whisper : ${whispers}">
-                        <th>
-                            ・<span th:text="${Whisper.userId}">Whisperer</span> 
-                            <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
-                        </th>
-                        <td><span th:text="${Whisper.text}">text</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form th:action="@{/<!-- 対応する階層 -->/new}" th:object="${albumForm}" method="post">
+                    <div>
+                        <label for="title">投稿する内容を入力（500文字以内）</label><br>
+                        <textarea name="whisper" rows="20" cols="50"></textarea>
+                    </div>
+                    <input type="radio" name="anonymous" value="true" checked> 名前を公開する<br>
+                    <input type="radio" name="anonymous" value="false"> 名前を公開しない<br>
+
+                    <button type="submit">Whisper</button>
+                </form>
             </div>
             <div id="child3">
-                <form th:action="@{/form}" method="post"></form>
+                <form th:action="@{/time-line}" method="post"></form>
                     <div>
-                        <button type="submit">新規投稿</button>
+                        <button type="submit">←back</button>
                     </div>
                 </form>
             </div>
