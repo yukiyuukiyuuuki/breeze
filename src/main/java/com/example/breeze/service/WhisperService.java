@@ -1,7 +1,7 @@
 package com.example.breeze.service;
 
-import com.example.breeze.entity.whisper;
-import com.example.breeze.form.whisperForm;
+import com.example.breeze.entity.Whisper;
+import com.example.breeze.form.WhisperForm;
 import com.example.breeze.repository.WhisperRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,18 +13,18 @@ public class WhisperService {
     this.whisperRepository = whisperRepository;
   }
 
-  public List<whisper> getAllwhispers(long albumId) {
-    return whisperRepository.selectAllWhispers(albumId);
+  public List<Whisper> getAllwhispers() {
+    return whisperRepository.selectAllWhispers();
   }
 
-  public void insertwhisper(whisperForm whisperForm) {
-    whisper whisper = new whisper();
+  public void insertwhisper(WhisperForm whisperForm) {
+    Whisper whisper = new Whisper();
     whisper.setText(whisperForm.getText());
     whisper.setAnonymous(whisperForm.getAnonymous());
-    whisperRepository.insertwhisper(whisper);
+    whisperRepository.insertWhisper(whisper);
   }
 
-  public whisper getwhisperById(long whisperId) {
-    return whisperRepository.selectwhisperById(whisperId);
+  public Whisper getwhisperById(long whisperId) {
+    return whisperRepository.selectWhisperById(whisperId);
   }
 }

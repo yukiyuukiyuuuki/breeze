@@ -1,11 +1,8 @@
 package com.example.breeze.service;
 
-import com.example.breeze.entity.Whisper;
 import com.example.breeze.entity.User;
 import com.example.breeze.form.UserForm;
 import com.example.breeze.repository.UserRepository;
-
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
