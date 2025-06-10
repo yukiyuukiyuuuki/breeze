@@ -1,4 +1,4 @@
-package com.example.music_management.security;
+package com.example.breeze.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

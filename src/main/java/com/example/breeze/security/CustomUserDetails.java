@@ -1,6 +1,6 @@
-package com.example.music_management.security;
+package com.example.breeze.security;
 
-import com.example.music_management.entity.User;
+import com.example.breeze.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
