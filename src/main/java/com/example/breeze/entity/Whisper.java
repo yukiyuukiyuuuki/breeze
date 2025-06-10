@@ -1,14 +1,14 @@
 package com.example.breeze.entity;
-
 import lombok.Data;
-import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 @Data
-public class User {
+public class Whisper {
     private long userId;
-    private String name;
-    private String password;
+    private long WhisperId;
+    private String text;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime subscribeDate;
+    private LocalDate postDate;
+    private boolean anonymous;
 }
