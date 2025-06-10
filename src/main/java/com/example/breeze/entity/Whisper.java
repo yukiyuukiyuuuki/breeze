@@ -1,7 +1,7 @@
 package com.example.breeze.entity;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class Whisper {
@@ -9,6 +9,6 @@ public class Whisper {
     private long WhisperId;
     private String text;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate postDate;
+    private LocalDateTime postDate;
     private boolean anonymous;
 }
