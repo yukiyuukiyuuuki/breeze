@@ -12,8 +12,8 @@ public class UserRepository {
     this.userMapper = userMapper;
   }
 
-  public User selectUserByUsername(String name) { // long userId?
-    return userMapper.selectUserById(name);
+  public User selectUserByUsername(long userId) {
+    return userMapper.selectUserById(userId);
   }
 
   public void insertUser(User user) {
