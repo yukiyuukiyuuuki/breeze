@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.breeze.entity.User;
 import com.example.breeze.entity.Whisper;
-import com.example.breeze.form.UserForm;
 import com.example.breeze.form.WhisperForm;
 import com.example.breeze.service.UserService;
 import com.example.breeze.service.WhisperService;
@@ -37,7 +35,7 @@ public class Ctrl {
   public String timeLine(Model model) {
     // List<Album> albums = albumService.getAllAlbums();
 
-    List<Whisper> whispers = WhisperService.getAllwhispers();
+    List<Whisper> whispers = whisperService.getAllwhispers();
     model.addAttribute("whispers", whispers);
     return "breeze/timeline";
   }
