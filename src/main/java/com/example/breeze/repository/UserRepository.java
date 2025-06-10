@@ -1,7 +1,7 @@
-package com.example.music_management.repository;
+package com.example.breeze.repository;
 
-import com.example.music_management.entity.User;
-import com.example.music_management.mapper.UserMapper;
+import com.example.breeze.entity.User;
+import com.example.breeze.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -12,7 +12,15 @@ public class UserRepository {
     this.userMapper = userMapper;
   }
 
-  public User selectUserByUsername(String username) {
-    return userMapper.selectUserByUsername(username);
+  public User selectUserByUsername(String name) { // long userId?
+    return userMapper.selectUserById(name);
+  }
+
+  public void insertUser(User user) {
+    userMapper.insertUser(user);
+  }
+
+  public void deleteUserById(long userId) {
+    userMapper.deleteUserById(userId);
   }
 }
