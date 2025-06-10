@@ -21,6 +21,6 @@ public class UserRepository {
   }
 
   public void deleteUserById(long userId) {
-    userMapper.deleteUserById(userId);
+    userMapper.deleteUser(userId);
   }
 }
