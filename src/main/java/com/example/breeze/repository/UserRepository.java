@@ -23,4 +23,8 @@ public class UserRepository {
   public void deleteUserById(long userId) {
     userMapper.deleteUser(userId);
   }
+
+  public User selectUserByUsername(String username) {
+    return userMapper.selectUserByUsername(username);
+  }
 }
