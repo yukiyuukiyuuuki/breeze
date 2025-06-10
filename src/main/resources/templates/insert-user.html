@@ -9,7 +9,7 @@
     <div th:if="${param.error}" class="errorMsg">
       ユーザ名、またはパスワードが違います
     </div>
-    <form th:action="@{/login}" method="post">
+    <form th:action="@{/insert}" method="post">
       <div>
         <label for="username">ユーザーネーム</label><br>
         <input type="text" id="username" name="username" />
@@ -18,13 +18,7 @@
         <label for="password">パスワード</label><br>
         <input type="password" id="password" name="password" />
       </div>
-      <button type="submit">ログイン</button>
-      <form th:action="@{/insert}" method="post"></form>
-        <div>
-          新規登録はこちら→<button type="submit">新規登録</button>
-        </div>
-      </form>
-    </form>
+      <button type="submit">新規登録</button>
     
     <div th:replace="~{layout :: footer}"></div>
   </body>
