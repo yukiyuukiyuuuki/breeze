@@ -7,10 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.breeze.entity.Album;
 import com.example.breeze.entity.Music;
+import com.example.breeze.entity.Whisper;
 import com.example.breeze.form.AlbumForm;
 import com.example.breeze.form.MusicForm;
+import com.example.breeze.form.WhisperForm;
 import com.example.breeze.service.AlbumService;
 import com.example.breeze.service.MusicService;
+import com.example.breeze.service.WhisperService;
+import com.example.breeze.service.AlbumService;
+import com.example.breeze.service.MusicService;
+import com.example.breeze.service.WhisperService;
+import com.example.breeze.service.AlbumService;
+import com.example.breeze.service.MusicService;
+import com.example.breeze.service.UserService;
+import com.example.breeze.service.WhisperService;
 import com.example.breeze.viewmodel.AlbumViewModel;
 
 import org.springframework.ui.Model;
@@ -22,11 +32,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/breeze")
 public class Ctrl {
   private final WhisperService whisperService;
-  private final MusicService musicService;
+  private final UserService userService;
 
-  public Ctrl(WhisperService whisperService, MusicService musicService) {
+  public Ctrl(WhisperService whisperService, UserService userService) {
     this.whisperService = whisperService;
-    this.musicService = musicService;
+    this.userService = userService;
   }
 
   @GetMapping("/login")
@@ -38,7 +48,7 @@ public class Ctrl {
   public String timeLine(Model model) {
     // List<Album> albums = albumService.getAllAlbums();
 
-    List<Whisper> whispers = WhisperService.getAllWhispers();
+    List<Whisper> whispers = WhisperService.getAllwhispers();
     model.addAttribute("whispers", whispers);
     return "breeze/timeline";
   }
@@ -63,8 +73,8 @@ public class Ctrl {
   }
 
   @GetMapping("/{whisperId}")
-  public String album(@PathVariable long whisperId, Model model) {
-    Whisper whisper = whisperService.getLongWhisperById(whisperId);
+  public String longview(@PathVariable long whisperId, Model model) {
+    Whisper whisper = whisperService.getwhisperById(whisperId);
     model.addAttribute("whisper", whisper);
     return "whisper/whisper-detail";
   }
