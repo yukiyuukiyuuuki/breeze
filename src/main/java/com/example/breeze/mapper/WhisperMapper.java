@@ -13,11 +13,19 @@ import java.util.List;
 public interface WhisperMapper {
 
   @Select("""
-      SELECT whisper.whisper_id, user.user_id, whisper.text, whisper.post_date, whisper.anonymous
+      SELECT whisper.whisper_id, user.user_id, user.name, whisper.text, whisper.post_date, whisper.anonymous
       FROM whisper
       JOIN user ON whisper.user_id = user.user_id
       """)
   public List<Whisper> selectAllWhisper();
+
+  @Select("""
+      SELECT user.user_id, user.name, whisper.text, whisper.post_date, whisper.anonymous
+      FROM whisper
+      JOIN user ON whisper.user_id = user.user_id
+      where whisper.whisper_id = #{whisperId}
+      """)
+  public Whisper selectWhisperById(long whisperId);
 
   @Insert("INSERT INTO whisper (user_id, text, post_date, anonymous) VALUES (#{user_id}, #{text}, #{post_date}, #{anonymous})")
   @Options(useGeneratedKeys = true, keyProperty = "whisper_id")
