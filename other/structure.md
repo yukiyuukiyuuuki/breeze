@@ -2,61 +2,61 @@
 ```mermaid
 classDiagram
     class UserService {
-        +getUserById(long): User
-        +createUser(UserForm): void
-        +deleteUserById(long): void
+        +getUserById(long) User
+        +createUser(UserForm) void
+        +deleteUserById(long) void
     }
     class User {
-        -userId: long
-        -name: String
-        -password: String
-        -subscribeDate: LocalDateTime
+        -userId long
+        -name String
+        -password String
+        -subscribeDate LocalDateTime
     }
     class UserRepository {
-        +selectUserById(long): User
-        +insertUser(User): void
-        +deleteUserById(long): void
+        +selectUserById(long) User
+        +insertUser(User) void
+        +deleteUserById(long) void
     }
     class UserMapper {
         <<interface>>
-        +selectUserById(long): User
-        +insertUser(User): void
+        +selectUserById(long) User
+        +insertUser(User) void
     }
     class UserForm {
-        -name: String
-        -password: String
+        -name String
+        -password String
     }
     class WhisperService {
-        +WhisperRepository: WhisperRepository
-        +getAllWhispers(): List<Whisper>
-        +insertWhisper(WhisperForm): void
-        +getLongWhispersById(WhisperId): Whisper
+        +WhisperRepository WhisperRepository
+        +getAllWhispers() List<Whisper>
+        +insertWhisper(WhisperForm) void
+        +getLongWhispersById(WhisperId) Whisper
     }
     class Whisper {
-        -userId: long
-        -WhisperId: long
-        -text: String
-        -postDate: LocalDateTime
-        -anonymous: boolean
+        -userId long
+        -WhisperId long
+        -text String
+        -postDate LocalDateTime
+        -anonymous boolean
     }
     class WhisperRepository {
-        +selectAllWhisper(): List<Whisper>
-        +insertWhisper(Whisper): void
+        +selectAllWhisper() List<Whisper>
+        +insertWhisper(Whisper) void
     }
     class WhisperMapper {
         <<interface>>
-        +selectAllWhisper(): List<Whisper>
-        +insertWhisper(Whisper): void
+        +selectAllWhisper() List<Whisper>
+        +insertWhisper(Whisper) void
     }
     class WhisperForm {
-        -text: String
-        -anonymous: boolean
+        -text String
+        -anonymous boolean
     }
     class Controller {
-        +login(): String
-        +subscribe(): String
-        +timeline(): String
-        +whisper(): String
+        +login() String
+        +subscribe() String
+        +timeline() String
+        +whisper() String
     }
 
     UserService --> User
@@ -83,5 +83,5 @@ erDiagram
         datetime post_date
         boolean anonymous
     }
-    user ||--o{ whisper : "posts"
+    user ||--o{ whisper  :"posts"
 ```
