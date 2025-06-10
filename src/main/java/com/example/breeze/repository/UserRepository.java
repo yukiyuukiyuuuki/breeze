@@ -12,7 +12,7 @@ public class UserRepository {
     this.userMapper = userMapper;
   }
 
-  public User selectUserByUserId(long userId) {
+  public User selectUserById(long userId) {
     return userMapper.selectUserById(userId);
   }
 
