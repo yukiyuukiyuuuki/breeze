@@ -16,7 +16,7 @@ public class WhisperRepository {
   }
     */
   public List<Whisper> selectAllWhispers() { // 引数などのチェック必要
-    return whisperMapper.selectAllWhisper();
+    return whisperMapper.selectAllWhisper(); // sellect -> select で動作するように揃えた。
   }
   public void insertWhisper(Whisper whisper) {
     whisperMapper.insertWhisper(whisper);
