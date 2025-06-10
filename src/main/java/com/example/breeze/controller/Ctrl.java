@@ -5,23 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.breeze.entity.Album;
-import com.example.breeze.entity.Music;
+import com.example.breeze.entity.User;
 import com.example.breeze.entity.Whisper;
-import com.example.breeze.form.AlbumForm;
-import com.example.breeze.form.MusicForm;
+import com.example.breeze.form.UserForm;
 import com.example.breeze.form.WhisperForm;
-import com.example.breeze.service.AlbumService;
-import com.example.breeze.service.MusicService;
-import com.example.breeze.service.WhisperService;
-import com.example.breeze.service.AlbumService;
-import com.example.breeze.service.MusicService;
-import com.example.breeze.service.WhisperService;
-import com.example.breeze.service.AlbumService;
-import com.example.breeze.service.MusicService;
 import com.example.breeze.service.UserService;
 import com.example.breeze.service.WhisperService;
-import com.example.breeze.viewmodel.AlbumViewModel;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,7 +52,7 @@ public class Ctrl {
   @PostMapping("/whisper")
   public String whisper(WhisperForm whisperForm // , Model model
   ) {
-    whisperService.insertWhisper(whisperForm);
+    whisperService.insertwhisper(whisperForm);
 
     // List<Album> albums = albumService.getAllAlbums();
     // model.addAttribute("albums", albums);
