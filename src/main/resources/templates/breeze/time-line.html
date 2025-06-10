@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout :: head(ログイン)}">
+        <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
+    </head>
+    <style>
+        #child1 {
+            background-color: lightblue;
+            padding: 10px; /* ボタンの周りに少し余白 */
+            text-align: center; /* ボタンを中央に配置 */
+        }
+        #child2 {
+            background-color: lightgreen;
+        }
+        #child3 {
+            bottom: 0; /* 下端に配置 */
+            background-color: red; /* 背景色（任意で変更） */
+            padding: 10px; /* ボタンの周りに少し余白 */
+            text-align: center; /* ボタンを中央に配置 */
+        }
+
+        @media (min-width: 600px) {
+            #parent {
+                display: flex;
+            }
+            #child1 {
+                flex-grow: 1;
+            }
+            #child2 {
+                flex-grow: 13;
+            }
+            #child3 {
+                flex-grow: 1;
+            }
+        }
+        @media (min-width: 600px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                display: block;
+                text-align: left;
+                width: 100%;
+            }
+        }
+    </style>
+    <body>
+        <div id="parent">
+            <div id="child1">
+                <form th:action="@{/login}" method="post"></form>
+                    <div>
+                        <button type="submit">ログイン</button>
+                    </div>
+                </form>
+            </div>
+            <div id="child2">
+                <table  class="whisper">
+                    <tbody>
+                        <tr th:each="Whisper : ${whispers}">
+                        <th>
+                            ・<span th:text="${Whisper.userId}">Whisperer</span> 
+                            <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
+                        </th>
+                        <td><span th:text="${Whisper.text}">text</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="child3">
+                <form th:action="@{/form}" method="post"></form>
+                    <div>
+                        <button type="submit">新規投稿</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
