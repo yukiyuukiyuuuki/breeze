@@ -17,10 +17,10 @@ public interface WhisperMapper {
       FROM whisper
       JOIN user ON whisper.user_id = user.user_id
       """)
-  public List<Whisper> selectAllWhisper();
+  public List<Whisper> selectAllWhispers();
 
   @Select("""
-      SELECT user.user_id, user.name, whisper.text, whisper.post_date, whisper.anonymous
+      SELECT whisper.whisper_id, user.user_id, user.name, whisper.text, whisper.post_date, whisper.anonymous
       FROM whisper
       JOIN user ON whisper.user_id = user.user_id
       where whisper.whisper_id = #{whisperId}
