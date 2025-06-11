@@ -5,7 +5,7 @@
     </head>
     <style>
         #child1 {
-            background-color: lightblue;
+            background-color: red;
             padding: 10px; /* ボタンの周りに少し余白 */
             text-align: center; /* ボタンを中央に配置 */
         }
@@ -13,17 +13,18 @@
             background-color: lightgreen;
             text-align: center; /* ボタンを中央に配置 */
         }
-        #child3 {
-            bottom: 0; /* 下端に配置 */
-            background-color: red; /* 背景色（任意で変更） */
-            padding: 10px; /* ボタンの周りに少し余白 */
-            text-align: center; /* ボタンを中央に配置 */
-        }
         button {
             padding: 10px;
         }
+        .form-button {
+            margin: 10px;
+            width: 80%;
+        }
         textarea {
             resize: none;
+            font-size: 16px;
+            width: 90%;
+            height: 300px;
             margin: 10px;
         }
 
@@ -35,10 +36,7 @@
                 flex-grow: 1;
             }
             #child2 {
-                flex-grow: 13;
-            }
-            #child3 {
-                flex-grow: 1;
+                flex-grow: 14;
             }
         }
         @media (min-width: 600px) {
@@ -55,31 +53,21 @@
     <body>
         <div id="parent">
             <div id="child1">
-                <form th:action="@{/login}" method="post"></form>
-                    <div>
-                        <button type="submit">ログイン</button>
-                    </div>
-                </form>
+                <button onclick="history.back()">←back</button>
             </div>
             <div id="child2">
                 <form th:action="@{/breeze/whisper}" th:object="${whisperForm}" method="post">
                     <div>
                         <label for="title">投稿する内容を入力（500文字以内）</label><br>
-                        <textarea name="whisper" rows="20" cols="50" th:field="*{text}"></textarea>
+                        <textarea name="whisper" th:field="*{text}"></textarea>
                     </div>
                     <input type="radio" name="anonymous" value="true" checked th:field="*{anonymous}"> 名前を公開する<br>
                     <input type="radio" name="anonymous" value="false" th:field="*{anonymous}"> 名前を公開しない<br>
 
-                    <button type="submit">Whisper</button>
+                    <button type="submit" class="form-button">Whisper🖋</button>
                 </form>
             </div>
-            <div id="child3">
-                <form th:action="@{/time-line}" method="post"></form>
-                    <div>
-                        <button type="submit">←back</button>
-                    </div>
-                </form>
-            </div>
+            
         </div>
     </body>
 </html>
