@@ -58,11 +58,12 @@
             <div id="child2">
                 <form th:action="@{/breeze/whisper}" th:object="${whisperForm}" method="post">
                     <div>
-                        <label for="title">投稿する内容を入力（500文字以内）</label><br>
-                        <textarea name="whisper" th:field="*{text}"></textarea>
+                        <label for="whisper">投稿する内容を入力（500文字以内）</label><br>
+                        <textarea name="whisper" id="whisper" th:field="*{text}"></textarea>
 
                     </div>
-                    <input type="radio" name="anonymous" value="true" checked th:field="*{anonymous}"> 名前を公開する<br>
+                    <!-- TODO issue -->
+                    <input type="radio" name="anonymous" value="true" th:field="*{anonymous}"> 名前を公開する<br>
                     <input type="radio" name="anonymous" value="false" th:field="*{anonymous}"> 名前を公開しない<br>
 
                     <button type="submit" class="form-button">Whisper🖋</button>
