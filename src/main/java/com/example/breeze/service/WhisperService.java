@@ -1,9 +1,9 @@
 package com.example.breeze.service;
 
-import com.example.breeze.entity.Whisper;
-import com.example.breeze.form.WhisperForm;
-import com.example.breeze.repository.WhisperRepository;
-import com.example.breeze.viewmodel.WhisperViewModel;
+import com.example.breeze.dataformat.entity.Whisper;
+import com.example.breeze.dataformat.form.WhisperForm;
+import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
+import com.example.breeze.db.repository.WhisperRepository;
 
 import org.springframework.stereotype.Service;
 import java.util.List;

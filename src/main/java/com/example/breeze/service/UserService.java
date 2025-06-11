@@ -1,8 +1,8 @@
 package com.example.breeze.service;
 
-import com.example.breeze.entity.User;
-import com.example.breeze.form.UserForm;
-import com.example.breeze.repository.UserRepository;
+import com.example.breeze.dataformat.entity.User;
+import com.example.breeze.dataformat.form.UserForm;
+import com.example.breeze.db.repository.UserRepository;
 
 import org.springframework.stereotype.Service;
 

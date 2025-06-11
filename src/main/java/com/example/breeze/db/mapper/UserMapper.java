@@ -1,11 +1,11 @@
-package com.example.breeze.mapper;
-
-import com.example.breeze.entity.User;
+package com.example.breeze.db.mapper;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import com.example.breeze.dataformat.entity.User;
 
 @Mapper
 public interface UserMapper {

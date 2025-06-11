@@ -1,8 +1,8 @@
-package com.example.breeze.repository;
+package com.example.breeze.db.repository;
 
-import com.example.breeze.entity.Whisper;
-import com.example.breeze.mapper.WhisperMapper; // mapperが入力された後に確認
-import com.example.breeze.viewmodel.WhisperViewModel;
+import com.example.breeze.dataformat.entity.Whisper;
+import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
+import com.example.breeze.db.mapper.WhisperMapper;
 
 import org.springframework.stereotype.Repository;
 import java.util.List;

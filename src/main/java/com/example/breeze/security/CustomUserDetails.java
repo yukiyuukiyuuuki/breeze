@@ -1,8 +1,10 @@
 package com.example.breeze.security;
 
-import com.example.breeze.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.breeze.dataformat.entity.User;
+
 import java.util.Collection;
 import java.util.List;
 

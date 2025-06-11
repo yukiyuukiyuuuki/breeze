@@ -1,7 +1,7 @@
-package com.example.breeze.mapper;
+package com.example.breeze.db.mapper;
 
-import com.example.breeze.entity.Whisper;
-import com.example.breeze.viewmodel.WhisperViewModel;
+import com.example.breeze.dataformat.entity.Whisper;
+import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

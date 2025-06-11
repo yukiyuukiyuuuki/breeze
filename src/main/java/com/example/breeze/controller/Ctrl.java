@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.breeze.entity.Whisper;
-import com.example.breeze.form.WhisperForm;
+import com.example.breeze.dataformat.entity.Whisper;
+import com.example.breeze.dataformat.form.WhisperForm;
+import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
 import com.example.breeze.service.UserService;
 import com.example.breeze.service.WhisperService;
-import com.example.breeze.viewmodel.WhisperViewModel;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

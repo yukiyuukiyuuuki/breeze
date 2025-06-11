@@ -1,4 +1,4 @@
-package com.example.breeze.viewmodel;
+package com.example.breeze.dataformat.viewmodel;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
