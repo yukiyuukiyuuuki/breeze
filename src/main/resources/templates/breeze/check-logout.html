@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout :: head(ログイン)}">
+	<link rel="stylesheet" media="all" th:href="@{/css/style.css}" />
+</head>
+
+<style>
+    #child1 {
+        background-color: red;
+        padding: 10px; /* ボタンの周りに少し余白 */
+        text-align: center; /* ボタンを中央に配置 */
+    }
+    #child2 {
+        background-color: lightgreen;
+        text-align: center; /* ボタンを中央に配置 */
+    }
+    button {
+        padding: 10px;
+        margin: 10px;
+    }
+    #errorMsg {
+        color: red;
+    }
+
+    @media (min-width: 600px) {
+        #parent {
+            display: flex;
+        }
+        #child1 {
+            flex-grow: 1;
+        }
+        #child2 {
+            flex-grow: 14;
+        }
+    }
+    @media (min-width: 600px) {
+        table {
+            width: 100%;
+        }
+        th, td {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    
+	<div th:replace="~{layout :: header}"></div>
+
+	<div id="parent">
+        <div id="child1">
+			<button onclick="history.back()">←back</button>
+        </div>
+        <div id="child2">
+			<h1>ログアウト</h1>
+			<form th:action="@{/logout}" method="post">
+				<div id="errorMsg">
+                    ログアウトします、よろしいですか？
+                </div>
+				<button type="submit">ログアウト</button>
+			</form>
+		</div>
+	</div>
+
+	<div th:replace="~{layout :: footer}"></div>
+</body>
+
+</html>
