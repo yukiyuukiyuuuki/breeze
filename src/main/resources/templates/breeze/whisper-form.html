@@ -56,13 +56,14 @@
                 <button onclick="history.back()">←back</button>
             </div>
             <div id="child2">
-                <form th:action="@{/<!-- 対応する階層 -->/new}" th:object="${albumForm}" method="post">
+                <form th:action="@{/breeze/whisper}" th:object="${whisperForm}" method="post">
                     <div>
                         <label for="title">投稿する内容を入力（500文字以内）</label><br>
-                        <textarea name="whisper"></textarea>
+                        <textarea name="whisper" th:field="*{text}"></textarea>
+
                     </div>
-                    <input type="radio" name="anonymous" value="true" checked> 名前を公開する<br>
-                    <input type="radio" name="anonymous" value="false"> 名前を公開しない<br>
+                    <input type="radio" name="anonymous" value="true" checked th:field="*{anonymous}"> 名前を公開する<br>
+                    <input type="radio" name="anonymous" value="false" th:field="*{anonymous}"> 名前を公開しない<br>
 
                     <button type="submit" class="form-button">Whisper🖋</button>
                 </form>

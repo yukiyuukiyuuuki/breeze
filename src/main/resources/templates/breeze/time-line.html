@@ -50,7 +50,7 @@
     <body>
         <div id="parent">
             <div id="child1">
-                <form th:action="@{/login}" method="post"></form>
+                <form th:action="@{/breeze/login}" method="get"></form>
                     <div>
                         <button type="submit">ログイン</button>
                     </div>
@@ -61,7 +61,7 @@
                     <tbody>
                         <tr th:each="Whisper : ${whispers}">
                         <th>
-                            ・<span th:text="${Whisper.userId}">Whisperer</span> 
+                            ・<span th:text="${Whisper.userName}">Whisperer</span> 
                             <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
                         </th>
                         <td><span th:text="${Whisper.text}">text</span></td>
@@ -70,7 +70,7 @@
                 </table>
             </div>
             <div id="child3">
-                <form th:action="@{/form}" method="post"></form>
+                <form th:action="@{/breeze/whisper}" method="get"></form>
                     <div>
                         <button type="submit">新規投稿</button>
                     </div>

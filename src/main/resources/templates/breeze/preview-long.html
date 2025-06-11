@@ -50,7 +50,7 @@
     <body>
         <div id="parent">
             <div id="child1">
-                <form th:action="@{/login}" method="post"></form>
+                <form th:action="@{/breeze/login}" method="get"></form>
                     <div>
                         <button type="submit">ログイン</button>
                     </div>
@@ -59,9 +59,9 @@
             <div id="child2">
                 <table  class="whisper">
                     <tbody>
-                        <tr th:each="Whisper : ${whispers}">
+                        <tr>
                         <th>
-                            ・<span th:text="${Whisper.userId}">Whisperer</span> 
+                            ・<span th:text="${Whisper.userName}">Whisperer</span> 
                             <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
                         </th>
                         <td><span th:text="${Whisper.text}">text</span></td>
@@ -70,11 +70,7 @@
                 </table>
             </div>
             <div id="child3">
-                <form th:action="@{/time-line}" method="post"></form>
-                    <div>
-                        <button type="submit">←back</button>
-                    </div>
-                </form>
+                <button onclick="history.back()">←back</button>
             </div>
         </div>
     </body>
