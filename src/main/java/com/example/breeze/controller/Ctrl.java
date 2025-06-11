@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping("/breeze")
 public class Ctrl {
   private final WhisperService whisperService;
   private final UserService userService;
@@ -32,7 +31,7 @@ public class Ctrl {
     return "login";
   }
 
-  @GetMapping
+  @GetMapping("time-line")
   public String timeLine(Model model) {
     // List<Album> albums = albumService.getAllAlbums();
 
