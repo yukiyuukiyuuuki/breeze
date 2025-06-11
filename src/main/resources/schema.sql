@@ -1,5 +1,5 @@
 CREATE TABLE
-  user (
+  users (
     user_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(60) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE
   whisper (
     whisper_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     user_id INTEGER,
-    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
     text VARCHAR(255) NOT NULL,
     post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     anonymous BOOLEAN
