@@ -11,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    // TODO after checking
     http
         .authorizeHttpRequests(request -> request
             .requestMatchers("/breeze", "/login").permitAll() // ここで許可するパスを指定

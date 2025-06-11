@@ -50,7 +50,8 @@
     <body>
         <div id="parent">
             <div id="child1">
-                <form th:action="@{/breeze/login}" method="get"></form>
+                <!-- TODO  issue  -->
+                <form th:action="@{/login}" method="get"></form>
                     <div>
                         <button type="submit">ログイン</button>
                     </div>
@@ -70,6 +71,7 @@
                 </table>
             </div>
             <div id="child3">
+                <!-- TODO  issue  -->
                 <form th:action="@{/breeze/whisper}" method="get"></form>
                     <div>
                         <button type="submit">新規投稿</button>
