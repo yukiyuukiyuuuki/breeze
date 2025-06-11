@@ -18,7 +18,7 @@ public class SecurityConfig {
         .formLogin(login -> login
             .loginProcessingUrl("/login")
             .loginPage("/login")
-            .defaultSuccessUrl("/time-line") // ログインに成功したらtime-lineに戻す
+            .defaultSuccessUrl("/time-line", true) // ログインに成功したらtime-lineに戻す
             .failureUrl("/login?error")
             .permitAll());
     return http.build();
