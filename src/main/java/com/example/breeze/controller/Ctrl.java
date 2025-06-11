@@ -9,6 +9,7 @@ import com.example.breeze.entity.Whisper;
 import com.example.breeze.form.WhisperForm;
 import com.example.breeze.service.UserService;
 import com.example.breeze.service.WhisperService;
+import com.example.breeze.viewmodel.WhisperViewModel;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,7 @@ public class Ctrl {
   public String timeLine(Model model) {
     // List<Album> albums = albumService.getAllAlbums();
 
-    List<Whisper> whispers = whisperService.getAllwhispers();
+    List<WhisperViewModel> whispers = whisperService.getAllwhispers();
     model.addAttribute("whispers", whispers);
     return "breeze/timeline";
   }
@@ -61,7 +62,7 @@ public class Ctrl {
 
   @GetMapping("/{whisperId}")
   public String longview(@PathVariable long whisperId, Model model) {
-    Whisper whisper = whisperService.getwhisperById(whisperId);
+    WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
     model.addAttribute("whisper", whisper);
     return "whisper/whisper-detail";
   }

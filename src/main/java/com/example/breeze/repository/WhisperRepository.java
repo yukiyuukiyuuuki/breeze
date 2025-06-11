@@ -2,6 +2,8 @@ package com.example.breeze.repository;
 
 import com.example.breeze.entity.Whisper;
 import com.example.breeze.mapper.WhisperMapper; // mapperが入力された後に確認
+import com.example.breeze.viewmodel.WhisperViewModel;
+
 import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
@@ -15,11 +17,11 @@ public class WhisperRepository {
     return musicMapper.selectMusicsById(albumId);
   }
     */
-  public List<Whisper> selectAllWhispers() { // 引数などのチェック必要
+  public List<WhisperViewModel> selectAllWhispers() { // 引数などのチェック必要
     return whisperMapper.selectAllWhispers(); // sellect -> select で動作するように揃えた。
   }
 
-  public Whisper selectWhisperById(long whisperId) {
+  public WhisperViewModel selectWhisperById(long whisperId) {
     return whisperMapper.selectWhisperById(whisperId);
   }
   public void insertWhisper(Whisper whisper) {
