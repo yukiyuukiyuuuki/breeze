@@ -38,14 +38,14 @@ public class Ctrl {
 
     List<WhisperViewModel> whispers = whisperService.getAllwhispers();
     model.addAttribute("whispers", whispers);
-    return "breeze/timeline";
+    return "breeze/time-line";
   }
 
   @GetMapping("/whisper")
   public String whisperForm(Model model) {
     WhisperForm whisperForm = new WhisperForm();
     model.addAttribute("whisperForm", whisperForm);
-    return "breeze/whisper";
+    return "breeze/whisper-form";
   }
 
   @PostMapping("/whisper")
@@ -57,13 +57,13 @@ public class Ctrl {
     // model.addAttribute("albums", albums);
     // return "album/album-list";
 
-    return "redirect:/timeLine";
+    return "redirect:/breeze/time-line";
   }
 
   @GetMapping("/{whisperId}")
   public String longview(@PathVariable long whisperId, Model model) {
     WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
     model.addAttribute("whisper", whisper);
-    return "whisper/whisper-detail";
+    return "breeze/preview-long";
   }
 }
