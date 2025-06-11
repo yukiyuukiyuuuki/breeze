@@ -1,4 +1,4 @@
-package com.example.breeze.form;
+package com.example.breeze.dataformat.form;
 
 import lombok.Data;
 

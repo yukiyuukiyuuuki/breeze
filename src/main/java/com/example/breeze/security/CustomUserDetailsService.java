@@ -1,7 +1,8 @@
 package com.example.breeze.security;
 
-import com.example.breeze.entity.User;
-import com.example.breeze.repository.UserRepository;
+import com.example.breeze.dataformat.entity.User;
+import com.example.breeze.db.repository.UserRepository;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

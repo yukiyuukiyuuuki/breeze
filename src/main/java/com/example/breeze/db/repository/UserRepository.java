@@ -1,7 +1,8 @@
-package com.example.breeze.repository;
+package com.example.breeze.db.repository;
 
-import com.example.breeze.entity.User;
-import com.example.breeze.mapper.UserMapper;
+import com.example.breeze.dataformat.entity.User;
+import com.example.breeze.db.mapper.UserMapper;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -22,5 +23,9 @@ public class UserRepository {
 
   public void deleteUserById(long userId) {
     userMapper.deleteUser(userId);
+  }
+
+  public User selectUserByUsername(String username) {
+    return userMapper.selectUserByUsername(username);
   }
 }

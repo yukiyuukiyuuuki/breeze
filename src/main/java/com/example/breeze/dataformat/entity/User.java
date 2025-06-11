@@ -1,4 +1,4 @@
-package com.example.breeze.entity;
+package com.example.breeze.dataformat.entity;
 
 import lombok.Data;
 import java.time.LocalDateTime;

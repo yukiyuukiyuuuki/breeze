@@ -1,6 +1,7 @@
-package com.example.breeze.mapper;
+package com.example.breeze.db.mapper;
 
-import com.example.breeze.entity.Whisper;
+import com.example.breeze.dataformat.entity.Whisper;
+import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,15 +18,15 @@ public interface WhisperMapper {
       FROM whisper
       JOIN user ON whisper.user_id = user.user_id
       """)
-  public List<Whisper> selectAllWhisper();
+  public List<WhisperViewModel> selectAllWhispers();
 
   @Select("""
-      SELECT user.user_id, user.name, whisper.text, whisper.post_date, whisper.anonymous
+      SELECT whisper.whisper_id, user.user_id, user.name, whisper.text, whisper.post_date, whisper.anonymous
       FROM whisper
       JOIN user ON whisper.user_id = user.user_id
       where whisper.whisper_id = #{whisperId}
       """)
-  public Whisper selectWhisperById(long whisperId);
+  public WhisperViewModel selectWhisperById(long whisperId);
 
   @Insert("INSERT INTO whisper (user_id, text, post_date, anonymous) VALUES (#{user_id}, #{text}, #{post_date}, #{anonymous})")
   @Options(useGeneratedKeys = true, keyProperty = "whisper_id")
