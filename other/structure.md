@@ -3,7 +3,7 @@
 classDiagram
     class UserService {
         +getUserById(long) User
-        +createUser(UserForm) void
+        +createdUser(UserForm) void
         +deleteUserById(long) void
     }
     class User {
@@ -16,11 +16,14 @@ classDiagram
         +selectUserById(long) User
         +insertUser(User) void
         +deleteUserById(long) void
+        +selectUserByUsername(String) User
     }
     class UserMapper {
         <<interface>>
         +selectUserById(long) User
+        +selectUserByname(String) User
         +insertUser(User) void
+        +deleteUser(long) void
     }
     class UserForm {
         -name String
@@ -30,7 +33,7 @@ classDiagram
         +WhisperRepository WhisperRepository
         +getAllWhispers() List<Whisper>
         +insertWhisper(WhisperForm) void
-        +getLongWhispersById(WhisperId) Whisper
+        +getWhisperById(long) WhisperViewModel
     }
     class Whisper {
         -userId long
@@ -40,32 +43,38 @@ classDiagram
         -anonymous boolean
     }
     class WhisperRepository {
-        +selectAllWhisper() List<Whisper>
+        +selectAllWhispers() List<WhisperViewModel>
+        +selectWhisperById(long) WhisperViewModel
         +insertWhisper(Whisper) void
     }
     class WhisperMapper {
         <<interface>>
-        +selectAllWhisper() List<Whisper>
+        +selectAllWhisper() List<WhisperViewModel>
+        +selectWhisperById(long) WhisperViewModel
         +insertWhisper(Whisper) void
     }
     class WhisperForm {
         -text String
         -anonymous boolean
     }
-    class Controller {
+    class Ctrl {
         +login() String
-        +subscribe() String
-        +timeline() String
-        +whisper() String
+        +timeLine(Model) String
+        +whisperForm(Model) String
+        +whisper(WhisperForm) String
+        +longview(long) String
     }
 
-    UserService --> User
-    UserService --> UserRepository
+    User --> UserService
+    UserMapper --> UserService
     UserRepository --> UserMapper
-    WhisperService --> WhisperRepository
+    UserForm --> UserService
+    Whisper --> WhisperService
+    WhisperMapper --> WhisperService
     WhisperRepository --> WhisperMapper
-    Controller --> UserService
-    Controller --> WhisperService
+    WhisperForm --> WhisperService
+    UserService --> Ctrl
+    WhisperService --> Ctrl
 ```
 # ER
 ```mermaid
