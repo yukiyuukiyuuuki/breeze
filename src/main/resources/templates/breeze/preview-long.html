@@ -59,9 +59,9 @@
             <div id="child2">
                 <table  class="whisper">
                     <tbody>
-                        <tr th:each="Whisper : ${whispers}">
+                        <tr>
                         <th>
-                            ・<span th:text="${Whisper.userId}">Whisperer</span> 
+                            ・<span th:text="${Whisper.userName}">Whisperer</span> 
                             <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
                         </th>
                         <td><span th:text="${Whisper.text}">text</span></td>
