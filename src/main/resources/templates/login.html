@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{layout :: head(ログイン)}">
 </head>
@@ -9,29 +9,25 @@
 
     <div id="parent">
         <div id="child1">
-            <button onclick="history.back()">←back</button>
+            <button onclick="history.back()" id="button_back">back<br>←</button>
         </div>
         <div id="child2">
             <h1>Login</h1>
-
-            <form action="/login" method="post"><input type="hidden" name="_csrf"
-                    value="dCb_-vTyryNy_ibHqnN-J635SvpQYiDv-DG8XKEc8TSCnVohRBfPzJfLn0BfmELynF5KHs_MZ8IyVRnCmweKapgtxAG1qDhH" />
+            <form th:action="@{/insert}" method="post">
                 <div>
                     <label for="username">ユーザーネーム</label><br>
-                    <input type="text" id="username" name="username" />
+                    <input type="text" id="textbox" name="username" />
                 </div>
                 <div>
                     <label for="password">パスワード</label><br>
-                    <input type="password" id="password" name="password" />
+                    <input type="password" id="textbox" name="password" />
                 </div>
-                <button type="submit" class="button">ログイン</button>
-                <form action="/insert" method="post"><input type="hidden" name="_csrf"
-                        value="dCb_-vTyryNy_ibHqnN-J635SvpQYiDv-DG8XKEc8TSCnVohRBfPzJfLn0BfmELynF5KHs_MZ8IyVRnCmweKapgtxAG1qDhH" />
+                <button type="submit" class="button" id="button">ログイン</button>
+                <form th:action="@{/insert}" method="post">
+                    <div>
+                        新規登録はこちら→<button type="submit" class="button" id="button">新規登録</button>
+                    </div>
                 </form>
-                <div>
-                    新規登録はこちら→<button type="submit" class="button">新規登録</button>
-                </div>
-            </form>
             </form>
         </div>
     </div>
