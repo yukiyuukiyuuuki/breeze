@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-
 @Controller
 public class RegistrationController {
     private final UserService userService;
@@ -19,14 +18,12 @@ public class RegistrationController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("userForm", new UserForm());
-        return "/register";
+        return "register";
     }
-    
 
     @PostMapping("/register")
     public String registerUser(UserForm userform) {
         userService.createdUser(userform);
         return "redirect:/login?register";
     }
-    
 }

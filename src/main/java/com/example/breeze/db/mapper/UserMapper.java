@@ -16,7 +16,7 @@ public interface UserMapper {
   @Select("SELECT user_id, name, password, subscribe_date FROM users WHERE name = #{username}")
   User selectUserByUsername(String username);
 
-  @Insert("INSERT INTO users (name, password, subscribe_date) VALUES (#{name}, #{password}, #{subscribe_date})")
+  @Insert("INSERT INTO users (name, password) VALUES (#{name}, #{password})")
   @Options(useGeneratedKeys = true, keyProperty = "userId")
   void insertUser(User user);
 

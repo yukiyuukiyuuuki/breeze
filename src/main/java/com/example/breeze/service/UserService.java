@@ -17,11 +17,11 @@ public class UserService {
   }
 
   public void createdUser(UserForm UserForm) {
-    User User = new User();
-    User.setName(UserForm.getName());
+    User user = new User();
+    user.setName(UserForm.getName());
     String hashedPassword = passwordEncoder.encode(UserForm.getPassword());
-    User.setPassword(hashedPassword);
-    UserRepository.insertUser(User);
+    user.setPassword(hashedPassword);
+    UserRepository.insertUser(user);
   }
 
   public User getUserById(long UserId){
