@@ -19,10 +19,11 @@ public class WhisperService {
     return whisperRepository.selectAllWhispers();
   }
 
-  public void insertwhisper(WhisperForm whisperForm) {
+  public void insertwhisper(WhisperForm whisperForm, long userId) {
     Whisper whisper = new Whisper();
     whisper.setText(whisperForm.getText());
     whisper.setAnonymous(whisperForm.getAnonymous());
+    whisper.setUserId(userId);
     whisperRepository.insertWhisper(whisper);
   }
 

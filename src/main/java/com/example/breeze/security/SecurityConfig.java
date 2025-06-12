@@ -11,14 +11,15 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    // TODO after checking
     http
         .authorizeHttpRequests(request -> request
-            .requestMatchers("/register", "/login", "/time-line","/css/**").permitAll() // ここで許可するパスを指定
+            .requestMatchers("/breeze", "/login", "/register",　"/css/**").permitAll() // ここで許可するパスを指定
             .anyRequest().authenticated())
         .formLogin(login -> login
             .loginProcessingUrl("/login")
             .loginPage("/login")
-            .defaultSuccessUrl("/time-line", true) // ログインに成功したらtime-lineに戻す
+            .defaultSuccessUrl("/breeze" , true) // ログインに成功したらtime-lineに戻す
             .failureUrl("/login?error")
             .permitAll());
     return http.build();
