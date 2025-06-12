@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout :: head(ログイン)}">
-        <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
     </head>
     <style>
         #child1 {
@@ -50,12 +49,7 @@
     <body>
         <div id="parent">
             <div id="child1">
-                <!-- TODO  issue  -->
-                <form th:action="@{/login}" method="get"></form>
-                    <div>
-                        <button type="submit">ログイン</button>
-                    </div>
-                </form>
+                <form th:action="@{/login}" method="get"><button type="submit">ログイン</button></form>
             </div>
             <div id="child2">
                 <table  class="whisper">

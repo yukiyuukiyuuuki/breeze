@@ -14,12 +14,12 @@ public class SecurityConfig {
     // TODO after checking
     http
         .authorizeHttpRequests(request -> request
-            .requestMatchers("/breeze", "/login").permitAll() // ここで許可するパスを指定
+            .requestMatchers("/breeze", "/login", "/css/**").permitAll() // ここで許可するパスを指定
             .anyRequest().authenticated())
         .formLogin(login -> login
             .loginProcessingUrl("/login")
             .loginPage("/login")
-            .defaultSuccessUrl("/breeze") // ログインに成功したらtime-lineに戻す
+            .defaultSuccessUrl("/breeze" , true) // ログインに成功したらtime-lineに戻す
             .failureUrl("/login?error")
             .permitAll());
     return http.build();
