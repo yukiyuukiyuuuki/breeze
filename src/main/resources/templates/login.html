@@ -2,6 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{layout :: head(ログイン)}">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
 <body>
@@ -12,7 +13,7 @@
             <button onclick="history.back()" id="button_back">back<br>←</button>
         </div>
         <div id="child2">
-            <h1>Login</h1>
+            <h1 id="title">Login</h1>
             <form th:action="@{/insert}" method="post">
                 <div>
                     <label for="username">ユーザーネーム</label><br>
@@ -22,7 +23,7 @@
                     <label for="password">パスワード</label><br>
                     <input type="password" id="textbox" name="password" />
                 </div>
-                <button type="submit" class="button" id="button">ログイン</button>
+                <button type="submit" id="button">ログイン</button>
                 <form th:action="@{/insert}" method="post">
                     <div>
                         新規登録はこちら→<button type="submit" class="button" id="button">新規登録</button>

@@ -24,6 +24,12 @@ label {
     margin: 0 auto;
 }
 
+#title {
+    text-align: center;
+    font-size: 40px;
+    margin: 5px auto;
+}
+
 #textbox {
     width: 300px;
     margin: 25px;
@@ -35,6 +41,18 @@ label {
 
 #errorMsg {
     color: red;
+}
+
+#checkMsg {
+    color: red;
+    font-size: 28px;
+    margin: 50px 0 10px 0;
+}
+
+#checkMsg_des {
+    color: red;
+    font-size: 18px;
+    margin: 0 0 50px 0;
 }
 
 #child1 {
@@ -51,6 +69,7 @@ label {
 #child3 {
     bottom: 0; /* 下端に配置 */
     text-align: center; /* ボタンを中央に配置 */
+    background-color: rgb(205, 255, 255);
     border: 1px, solid, #000000;
 }
 
@@ -92,16 +111,17 @@ label {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
-#title {
-    text-align: center;
-}
-
 textarea {
     resize: none;
     font-size: 16px;
-    width: 90%;
-    height: 300px;
+    width: 60%;
+    height: 400px;
     margin: 10px;
+}
+
+#th {
+    border: 1px, solid, #000000;
+    font-size: 18px;
 }
 
 @media (min-width: 600px) {
@@ -112,7 +132,10 @@ textarea {
         flex-grow: 1;
     }
     #child2 {
-       flex-grow: 10;
+        flex-grow: 10;
+    }
+    #child3 {
+        flex-grow: 1;
     }
 }
 

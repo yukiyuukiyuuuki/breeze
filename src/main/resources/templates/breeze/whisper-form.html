@@ -1,72 +1,31 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout :: head(ログイン)}">
-    </head>
-    <style>
-        #child1 {
-            background-color: red;
-            padding: 10px; /* ボタンの周りに少し余白 */
-            text-align: center; /* ボタンを中央に配置 */
-        }
-        #child2 {
-            background-color: lightgreen;
-            text-align: center; /* ボタンを中央に配置 */
-        }
-        button {
-            padding: 10px;
-        }
-        .form-button {
-            margin: 10px;
-            width: 80%;
-        }
-        textarea {
-            resize: none;
-            font-size: 16px;
-            width: 90%;
-            height: 300px;
-            margin: 10px;
-        }
 
-        @media (min-width: 600px) {
-            #parent {
-                display: flex;
-            }
-            #child1 {
-                flex-grow: 1;
-            }
-            #child2 {
-                flex-grow: 14;
-            }
-        }
-        @media (min-width: 600px) {
-            table {
-                width: 100%;
-            }
-            th, td {
-                display: block;
-                text-align: left;
-                width: 100%;
-            }
-        }
-    </style>
-    <body>
-        <div id="parent">
-            <div id="child1">
-                <button onclick="history.back()">←back</button>
-            </div>
-            <div id="child2">
-                <form th:action="@{/<!-- 対応する階層 -->/new}" th:object="${albumForm}" method="post">
-                    <div>
-                        <label for="title">投稿する内容を入力（500文字以内）</label><br>
-                        <textarea name="whisper"></textarea>
-                    </div>
-                    <input type="radio" name="anonymous" value="true" checked> 名前を公開する<br>
-                    <input type="radio" name="anonymous" value="false"> 名前を公開しない<br>
+<head th:replace="~{layout :: head(ログイン)}">
+</head>
 
-                    <button type="submit" class="form-button">Whisper🖋</button>
-                </form>
-            </div>
-            
+<body>
+    <div th:replace="~{layout :: header}"></div>
+
+    <div id="parent">
+        <div id="child1">
+            <button onclick="history.back()" id="button_back">back<br>←</button>
         </div>
-    </body>
+        <div id="child2">
+            <h1 id="title">Whisper</h1>
+            <form th:action="@{/breeze/new}" th:object="${albumForm}" method="post">
+                <div>
+                    <label for="title">投稿する内容を入力（500文字以内）</label><br>
+                    <textarea name="whisper" id="textarea"></textarea>
+                </div>
+                <input type="radio" name="anonymous" value="true" checked> 名前を公開する<br>
+                <input type="radio" name="anonymous" value="false"> 名前を公開しない<br>
+
+                <button type="submit" id="button">Whisper🖋</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
 </html>
