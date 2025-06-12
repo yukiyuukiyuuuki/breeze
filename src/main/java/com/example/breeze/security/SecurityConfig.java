@@ -13,7 +13,7 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeHttpRequests(request -> request
-            .requestMatchers("/breeze", "/login", "/register","/css/**").permitAll() // ここで許可するパスを指定
+            .requestMatchers("/insert-user","/breeze", "/login", "/register","/css/**").permitAll() // ここで許可するパスを指定
             .anyRequest().authenticated())
         .formLogin(login -> login
             .loginProcessingUrl("/login")
