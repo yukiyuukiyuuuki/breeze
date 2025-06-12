@@ -1,8 +1,10 @@
-package com.example.music_management.security;
+package com.example.breeze.security;
 
-import com.example.music_management.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.breeze.dataformat.entity.User;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -25,6 +27,10 @@ public class CustomUserDetails implements UserDetails {
 
   @Override
   public String getUsername() {
-    return user.getUsername();
+    return user.getName();
+  }
+
+  public long getUserId() {
+    return user.getUserId();
   }
 }

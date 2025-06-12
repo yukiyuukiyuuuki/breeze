@@ -1,9 +1,9 @@
-package com.example.music_management.form;
+package com.example.breeze.dataformat.form;
 
 import lombok.Data;
 
 @Data
 public class UserForm {
-  private String username;
+  private String name;
   private String password;
 }
