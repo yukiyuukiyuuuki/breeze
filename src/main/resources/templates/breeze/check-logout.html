@@ -4,62 +4,23 @@
 <head th:replace="~{layout :: head(ログイン)}">
 </head>
 
-<style>
-    #child1 {
-        background-color: red;
-        padding: 10px; /* ボタンの周りに少し余白 */
-        text-align: center; /* ボタンを中央に配置 */
-    }
-    #child2 {
-        background-color: lightgreen;
-        text-align: center; /* ボタンを中央に配置 */
-    }
-    button {
-        padding: 10px;
-        margin: 10px;
-    }
-    #errorMsg {
-        color: red;
-    }
-
-    @media (min-width: 600px) {
-        #parent {
-            display: flex;
-        }
-        #child1 {
-            flex-grow: 1;
-        }
-        #child2 {
-            flex-grow: 14;
-        }
-    }
-    @media (min-width: 600px) {
-        table {
-            width: 100%;
-        }
-        th, td {
-            display: block;
-            text-align: left;
-            width: 100%;
-        }
-    }
-</style>
-
 <body>
-    
 	<div th:replace="~{layout :: header}"></div>
 
 	<div id="parent">
         <div id="child1">
-			<button onclick="history.back()">←back</button>
+			<button onclick="history.back()" id="button_back">back<br>←</button>
         </div>
         <div id="child2">
-			<h1>ログアウト</h1>
+			<h1 id="title">ログアウト</h1>
 			<form th:action="@{/logout}" method="post">
-				<div id="errorMsg">
-                    ログアウトします、よろしいですか？
+				<div id="checkMsg">
+                    ログアウトします、よろしいですか？<br>
                 </div>
-				<button type="submit">ログアウト</button>
+                <div id="checkMsg_des">
+                    (ログアウトした場合、Whisper機能を使用する際は再度ログインしてください)
+                </div>
+				<button type="submit" id="button">ログアウト</button>
 			</form>
 		</div>
 	</div>

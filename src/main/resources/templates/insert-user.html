@@ -4,69 +4,29 @@
 <head th:replace="~{layout :: head(ログイン)}">
 </head>
 
-<style>
-    #child1 {
-        background-color: red;
-        padding: 10px; /* ボタンの周りに少し余白 */
-        text-align: center; /* ボタンを中央に配置 */
-    }
-    #child2 {
-        background-color: lightgreen;
-        text-align: center; /* ボタンを中央に配置 */
-    }
-    button {
-        padding: 10px;
-        margin: 10px;
-    }
-    #errorMsg {
-        color: red;
-    }
-
-    @media (min-width: 600px) {
-        #parent {
-            display: flex;
-        }
-        #child1 {
-            flex-grow: 1;
-        }
-        #child2 {
-            flex-grow: 14;
-        }
-    }
-    @media (min-width: 600px) {
-        table {
-            width: 100%;
-        }
-        th, td {
-            display: block;
-            text-align: left;
-            width: 100%;
-        }
-    }
-</style>
-
 <body>
 	<div th:replace="~{layout :: header}"></div>
 
 	<div id="parent">
         <div id="child1">
-			<button onclick="history.back()">←back</button>
+			<button onclick="history.back()" id="button_back">back<br>←</button>
         </div>
         <div id="child2">
-			<h1>新規登録</h1>
+            <h2 id="footer">NEW USER</h2>
+			<h1 id="title">Welcome!</h1>
 			<div th:if="${param.error}" id="errorMsg">
 				ユーザ名、またはパスワードが違います
 			</div>
 			<form th:action="@{/insert}" method="post">
 				<div>
 					<label for="username">ユーザーネーム</label><br>
-					<input type="text" id="username" name="username" />
+					<input type="text" id="textbox" name="username" />
 				</div>
 				<div>
 					<label for="password">パスワード</label><br>
-					<input type="password" id="password" name="password" />
+					<input type="password" id="textbox" name="password" />
 				</div>
-				<button type="submit">新規登録</button>
+				<button type="submit" id="button">新規登録</button>
 			</form>
 		</div>
 	</div>
