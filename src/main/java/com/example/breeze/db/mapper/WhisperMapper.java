@@ -14,22 +14,22 @@ import java.util.List;
 public interface WhisperMapper {
 
   @Select("""
-      SELECT whisper.whisper_id, users.user_id, users.name, whisper.text, whisper.post_date, whisper.anonymous
+      SELECT users.user_id, whisper.whisper_id, users.name, whisper.text, whisper.post_date, whisper.anonymous
       FROM whisper
       JOIN users ON whisper.user_id = users.user_id
       """)
   public List<WhisperViewModel> selectAllWhispers();
 
   @Select("""
-      SELECT whisper.whisper_id, users.user_id, users.name, whisper.text, whisper.post_date, whisper.anonymous
+      SELECT users.user_id, whisper.whisper_id, users.name, whisper.text, whisper.post_date, whisper.anonymous
       FROM whisper
       JOIN users ON whisper.user_id = users.user_id
       where whisper.whisper_id = #{whisperId}
       """)
   public WhisperViewModel selectWhisperById(long whisperId);
 
-  @Insert("INSERT INTO whisper (user_id, text, post_date, anonymous) VALUES (#{user_id}, #{text}, #{post_date}, #{anonymous})")
-  @Options(useGeneratedKeys = true, keyProperty = "whisper_id")
+  @Insert("INSERT INTO whisper (user_id, text, anonymous) VALUES (#{userId}, #{text}, #{anonymous})")
+  @Options(useGeneratedKeys = true, keyProperty = "whisperId")
   void insertWhisper(Whisper whisper);
 
 }
