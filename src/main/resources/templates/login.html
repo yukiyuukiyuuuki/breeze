@@ -13,7 +13,14 @@
         </div>
         <div id="child2">
             <h1>Login</h1>
-            <form th:action="@{/insert}" method="post">
+            <div th:if="${param.error}" style="color:red">
+                ユーザ名、またはパスワードが違います
+            </div>
+             <div th:if="${param.register}" style="color:blue">
+                登録に成功しました
+            </div>
+            <form th:action="@{/login}" method="post"><input type="hidden" name="_csrf"
+                    value="dCb_-vTyryNy_ibHqnN-J635SvpQYiDv-DG8XKEc8TSCnVohRBfPzJfLn0BfmELynF5KHs_MZ8IyVRnCmweKapgtxAG1qDhH" />
                 <div>
                     <label for="username">ユーザーネーム</label><br>
                     <input type="text" id="textbox" name="username" />
@@ -22,12 +29,10 @@
                     <label for="password">パスワード</label><br>
                     <input type="password" id="textbox" name="password" />
                 </div>
-                <button type="submit" class="button" id="button">ログイン</button>
-                <form th:action="@{/insert}" method="post">
-                    <div>
-                        新規登録はこちら→<button type="submit" class="button" id="button">新規登録</button>
-                    </div>
-                </form>
+                <button type="submit" class="button">ログイン</button>
+            </form>
+            <form th:action="@{/register}" method="get" style="display: inline;">
+                <div>新規登録はこちら→<button type="submit" class="button">新規登録</button>
             </form>
         </div>
     </div>

@@ -14,7 +14,7 @@ public class SecurityConfig {
     // TODO after checking
     http
         .authorizeHttpRequests(request -> request
-            .requestMatchers("/breeze", "/login", "/css/**").permitAll() // ここで許可するパスを指定
+            .requestMatchers("/breeze", "/login", "/register",　"/css/**").permitAll() // ここで許可するパスを指定
             .anyRequest().authenticated())
         .formLogin(login -> login
             .loginProcessingUrl("/login")
