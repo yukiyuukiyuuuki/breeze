@@ -28,8 +28,8 @@ public interface WhisperMapper {
       """)
   public WhisperViewModel selectWhisperById(long whisperId);
 
-  @Insert("INSERT INTO whisper (user_id, text, post_date, anonymous) VALUES (#{user_id}, #{text}, #{post_date}, #{anonymous})")
-  @Options(useGeneratedKeys = true, keyProperty = "whisper_id")
+  @Insert("INSERT INTO whisper (user_id, text, anonymous) VALUES (#{userId}, #{text}, #{anonymous})")
+  @Options(useGeneratedKeys = true, keyProperty = "whisperId")
   void insertWhisper(Whisper whisper);
 
 }

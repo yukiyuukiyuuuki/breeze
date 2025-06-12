@@ -9,6 +9,6 @@ public class User {
     private long userId;
     private String name;
     private String password;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime subscribeDate;
 }

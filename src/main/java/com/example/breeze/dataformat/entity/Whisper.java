@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 @Data
 public class Whisper {
     private long userId;
-    private long WhisperId;
+    private long whisperId;
     private String text;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime postDate;
     private boolean anonymous;
 }
