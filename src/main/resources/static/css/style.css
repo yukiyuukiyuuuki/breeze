@@ -129,6 +129,12 @@ textarea {
     margin: 10px;
 }
 
+#check-box {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
 #th {
     border: 1px, solid, #000000;
     font-size: 18px;
