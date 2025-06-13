@@ -16,8 +16,8 @@
                 <!--ログインしているときに表示-->
                 <form
                     sec:authorize="isAuthenticated()"
-                    th:action="@{/logout}"
-                    method="post"
+                    th:action="@{/check-logout}"
+                    method="get"
                 >
                     <button type="submit" id="button">ログアウト</button>
                 </form>
