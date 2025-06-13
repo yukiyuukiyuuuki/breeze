@@ -20,7 +20,7 @@ public interface UserMapper {
   @Options(useGeneratedKeys = true, keyProperty = "userId")
   void insertUser(User user);
 
-  @Delete("DELETE FROM users")
+  @Delete("DELETE FROM users WHERE user_id = #{userId}")
   void deleteUser(long userId);
 
 }

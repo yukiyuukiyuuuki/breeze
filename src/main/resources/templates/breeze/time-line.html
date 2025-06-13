@@ -21,6 +21,13 @@
                 >
                     <button type="submit" id="button">ログアウト</button>
                 </form>
+                <form
+                    sec:authorize="isAuthenticated()"
+                    th:action="@{/check-delete}"
+                    method="get"
+                >
+                    <button type="submit" id="button">退会</button>
+                </form>
             </div>
             <div id="child2">
                 <table id="th">
