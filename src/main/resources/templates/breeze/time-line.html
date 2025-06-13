@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head(ログイン)}"></head>
+    <head th:replace="~{layout :: head(ログイン)}"></head>
     <body>
         <div th:replace="~{layout :: header}"></div>
         <div id="parent">
             <div id="child1">
-            <!--ログアウトしているときに表示-->
-            <form sec:authorize="isAnonymous()" th:action="@{/login}" method="get"><button type="submit" id="button">ログイン</button></form>
-            <!--ログインしているときに表示-->
-              <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post"><button type="submit" id="button">ログアウト</button></form>
+                <!--ログアウトしているときに表示-->
+                <form
+                    sec:authorize="isAnonymous()"
+                    th:action="@{/login}"
+                    method="get"
+                >
+                    <button type="submit" id="button">ログイン</button>
+                </form>
+                <!--ログインしているときに表示-->
+                <form
+                    sec:authorize="isAuthenticated()"
+                    th:action="@{/logout}"
+                    method="post"
+                >
+                    <button type="submit" id="button">ログアウト</button>
+                </form>
             </div>
             <div id="child2">
                 <table id="th">
