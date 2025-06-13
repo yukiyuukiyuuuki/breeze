@@ -6,41 +6,35 @@
         <div th:replace="~{layout :: header}"></div>
 
         <div id="parent">
-            <div id="child1">
-                <button onclick="history.back()" id="button_back">←back</button>
-            </div>
-            <div id="child2">
+        <div id="child1">
+            <button onclick="history.back()" id="button_back">←back</button>
+        </div>
+              <div id="child2">
                 <form
                     th:action="@{/breeze/whisper}"
                     th:object="${whisperForm}"
                     method="post"
                 >
-                    <div>
-                        <label for="whisper"
-                            >投稿する内容を入力（500文字以内）</label
-                        ><br />
-                        <textarea
-                            name="whisper"
-                            id="textarea"
-                            th:field="*{text}"
-                        ></textarea>
-                    </div>
-                    <input
-                        type="radio"
-                        name="anonymous"
-                        value="true"
-                        th:field="*{anonymous}"
-                    />
-                    名前を公開する<br />
-                    <input
-                        type="radio"
-                        name="anonymous"
-                        value="false"
-                        th:field="*{anonymous}"
-                    />
-                    名前を公開しない<br />
-                    <button type="submit" id="button">Whisper🖋</button>
-                </form>
+                  
+                <div>
+                    <label for="whisper"
+                        >投稿する内容を入力（500文字以内）</label
+                    ><br />
+                    <textarea
+                        name="whisper"
+                        id="textarea"
+                        th:field="*{text}"
+                    ></textarea>
+                </div>
+                <!--
+                <input type="radio" name="anonymous" value="true" th:field="*{anonymous}"> 名前を公開する<br>
+                <input type="radio" name="anonymous" value="false" th:field="*{anonymous}"> 名前を公開しない<br>
+                -->
+                <label for="whisper" id="check-box">
+                    <input type="checkbox" th:field="*{anonymous}"><span>名前を公開しない</span>
+                </label><br>
+                <button type="submit" id="button">Whisper🖋</button>
+            </form>
             </div>
         </div>
 
