@@ -74,43 +74,51 @@ label {
 }
 
 #button {
-  position: relative;
-  display: inline-block;
-  padding: 15px 40px;
-  margin: 20px 0;
-  text-decoration: none;
-  color: #FFF;
-  background: #3556fd;/*背景色*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-weight: bold;
-  font-size: 18px;
+    position: relative;
+    display: inline-block;
+    padding: 15px 40px;
+    margin: 20px 0;
+    text-decoration: none;
+    color: #FFF;
+    background: #3556fd;/*背景色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+    font-size: 18px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
 }
 
 #button:hover {
-  color: #3556fd;
-  background: #FFF;/*背景色*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+    color: #3556fd;
+    background: #FFF;/*背景色*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 #button_back {
-  position: relative;
-  display: inline-block;
-  padding: 40px;
-  margin: 20px 0;
-  text-decoration: none;
-  color: #8a0b8c;
-  background: #ffffff;/*背景色*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-weight: bold;
-  font-size: 18px;
+    position: relative;
+    display: inline-block;
+    padding: 40px;
+    margin: 20px 0;
+    text-decoration: none;
+    color: #8a0b8c;
+    background: #ffffff;/*背景色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+    font-size: 18px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
 }
 
 #button_back:hover {
-  color: #ffffff;
-  background: #8a0b8c;/*背景色*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+    color: #ffffff;
+    background: #8a0b8c;/*背景色*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 textarea {
