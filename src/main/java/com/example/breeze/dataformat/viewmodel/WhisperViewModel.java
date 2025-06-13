@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class WhisperViewModel {
     private long userId;
     private long WhisperId;
-    private String userName;
+    private String name;
     private String text;
     @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime postDate;

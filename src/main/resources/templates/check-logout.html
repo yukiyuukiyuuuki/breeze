@@ -4,7 +4,6 @@
 
     <body>
         <div th:replace="~{layout :: header}"></div>
-
         <div id="parent">
             <div id="child1">
                 <button onclick="history.back()" id="button_back">
@@ -12,18 +11,21 @@
                 </button>
             </div>
             <div id="child2">
-                <h1 id="title">ユーザー退会</h1>
-                <form th:action="@{/delete}" method="post">
-                    <div id="checkMsg">退会します、よろしいですか？<br /></div>
-                    <div id="checkMsg_des">
-                        退会すると、再度ログインすることが出来なくなります<br />
-                        本当によろしいですか？
+                <h1 id="title">ログアウト</h1>
+                <form th:action="@{/logout}" method="post">
+                    <div id="checkMsg">
+                        ログアウトします、よろしいですか？<br />
                     </div>
-                    <button type="submit" id="button">退会</button>
+                    <div id="checkMsg_des">
+                        (ログアウトした場合、Whisper機能を使用する際は再度ログインしてください)
+                    </div>
+                    <button type="submit" id="button">ログアウト</button>
                 </form>
             </div>
         </div>
-
+        
         <div th:replace="~{layout :: footer}"></div>
+        <!--
+        -->
     </body>
 </html>

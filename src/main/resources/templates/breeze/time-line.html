@@ -1,28 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head(ログイン)}"></head>
+    <head th:replace="~{layout :: head(ログイン)}"></head>
     <body>
         <div th:replace="~{layout :: header}"></div>
         <div id="parent">
             <div id="child1">
-            <!--ログアウトしているときに表示-->
-            <form sec:authorize="isAnonymous()" th:action="@{/login}" method="get"><button type="submit" id="button">ログイン</button></form>
-            <!--ログインしているときに表示-->
-              <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post"><button type="submit" id="button">ログアウト</button></form>
+                <!--ログアウトしているときに表示-->
+                <form
+                    sec:authorize="isAnonymous()"
+                    th:action="@{/login}"
+                    method="get"
+                >
+                    <button type="submit" id="button">ログイン</button>
+                </form>
+                <!--ログインしているときに表示-->
+                <form
+                    sec:authorize="isAuthenticated()"
+                    th:action="@{/check-logout}"
+                    method="get"
+                >
+                    <button type="submit" id="button">ログアウト</button>
+                </form>
             </div>
             <div id="child2">
                 <table id="th">
                     <tbody>
                         <tr th:each="Whisper : ${whispers}">
-                            <th>
-                                <span th:text="${Whisper.userName}"
-                                    >Whisperer</span
-                                >
-                                <span th:text="${Whisper.postDate}"
-                                    >yyyy-MM-dd</span
-                                >
-                            </th>
-                            <td><span th:text="${Whisper.text}">text</span></td>
+                            <!-- TODO 長文レビューに推移できるようにする -->
+                            <form th:action="@{/breeze/{WhisperId}(WhisperId=${Whisper.WhisperId})}" method="get">
+                                <th>
+                                    <span
+                                        th:text="${Whisper.name}"
+                                        th:unless="${Whisper.anonymous}"
+                                    ></span>
+                                    <span th:if="${Whisper.anonymous}"
+                                        >Whisperer</span
+                                    >
+                                    <span th:text="${Whisper.postDate}"
+                                        >yyyy-MM-dd</span
+                                    >
+                                </th>
+                                <td>
+                                    <span th:text="${Whisper.text}">text</span>
+                                </td>
+                                <td>
+                                    <!-- TODO style -->
+                                        <button
+                                            type="submit"
+                                            th:if="${#strings.length(Whisper.text) >= 150}"
+                                        >
+                                            続きを見る
+                                        </button>
+                                </td>
+                            </form>
                         </tr>
                     </tbody>
                 </table>

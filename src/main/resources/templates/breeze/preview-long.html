@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout :: head(長文whisper表示)}">
+        <link rel="stylesheet" href="../../static/css/style.css" />
+    </head>
 
-<head th:replace="~{layout :: head(長文whisper表示)}">
-    <link rel="stylesheet" href="../../static/css/style.css">
-</head>
+    <body>
+        <div th:replace="~{layout :: header}"></div>
 
-<body>
-    <div th:replace="~{layout :: header}"></div>
-
-    <div id="parent">
-        <div id="child1">
-            <form th:action="@{/login}" method="get">
-                <button type="submit" id="button">ログイン</button>
-            </form>
+        <div id="parent">
+            <div id="child1">
+                <form th:action="@{/login}" method="get">
+                    <button type="submit" id="button">ログイン</button>
+                </form>
+            </div>
+            <div id="child2">
+                <table id="th">
+                    <tbody>
+                        <tr>
+                            <th>
+                                <span th:text="${whisper.name}">Whisperer</span>
+                                <span th:text="${whisper.postDate}"
+                                    >yyyy-MM-dd</span
+                                >
+                            </th>
+                            <td><span th:text="${whisper.text}">text</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="child3">
+                <button onclick="history.back()" id="button_back">
+                    back<br />←
+                </button>
+            </div>
         </div>
-        <div id="child2">
-            <table id="th">
-                <tbody>
-                    <tr>
-                        <th>
-                            ・<span th:text="${Whisper.userName}">Whisperer</span>
-                            <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
-                        </th>
-                        <td><span th:text="${Whisper.text}">text</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="child3">
-            <button onclick="history.back()" id="button_back">back<br>←</button>
-        </div>
-    </div>
 
-    <div th:replace="~{layout :: footer}"></div>
-</body>
-
+        <div th:replace="~{layout :: footer}"></div>
+    </body>
 </html>

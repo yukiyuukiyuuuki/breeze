@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout :: head(ログイン)}"> </head>
 
-<head th:replace="~{layout :: head(ログイン)}">
-</head>
+    <body>
+        <div th:replace="~{layout :: header}"></div>
 
-<body>
-	<div th:replace="~{layout :: header}"></div>
-
-	<div id="parent">
-        <div id="child1">
-			<button onclick="history.back()" id="button_back">back<br>←</button>
+        <div id="parent">
+            <div id="child1">
+                <button onclick="history.back()" id="button_back">
+                    back<br />←
+                </button>
+            </div>
+            <div id="child2">
+                <h2 id="footer">NEW USER</h2>
+                <h1 id="title">Welcome!</h1>
+                <div th:if="${param.error}" id="errorMsg">
+                    ユーザ名、またはパスワードが違います
+                </div>
+                <form th:action="@{/insert}" method="post">
+                    <div>
+                        <label for="username">ユーザーネーム</label><br />
+                        <input type="text" id="textbox" name="username" />
+                    </div>
+                    <div>
+                        <label for="password">パスワード</label><br />
+                        <input type="password" id="textbox" name="password" />
+                    </div>
+                    <button type="submit" id="button">新規登録</button>
+                </form>
+            </div>
         </div>
-        <div id="child2">
-            <h2 id="footer">NEW USER</h2>
-			<h1 id="title">Welcome!</h1>
-			<div th:if="${param.error}" id="errorMsg">
-				ユーザ名、またはパスワードが違います
-			</div>
-			<form th:action="@{/insert}" method="post">
-				<div>
-					<label for="username">ユーザーネーム</label><br>
-					<input type="text" id="textbox" name="username" />
-				</div>
-				<div>
-					<label for="password">パスワード</label><br>
-					<input type="password" id="textbox" name="password" />
-				</div>
-				<button type="submit" id="button">新規登録</button>
-			</form>
-		</div>
-	</div>
 
-	<div th:replace="~{layout :: footer}"></div>
-</body>
-
+        <div th:replace="~{layout :: footer}"></div>
+    </body>
 </html>

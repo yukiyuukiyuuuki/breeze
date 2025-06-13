@@ -9,4 +9,8 @@ public class LoginCtrl {
   public String login() {
     return "login";
   }
+  @GetMapping("/check-logout")
+  public String getcheck() {
+    return "check-logout";
+  }
 }
