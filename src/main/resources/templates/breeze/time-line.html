@@ -27,7 +27,7 @@
                     <tbody>
                         <tr th:each="Whisper : ${whispers}">
                             <!-- TODO 長文レビューに推移できるようにする -->
-                            <form th:action="@{/breeze/}" method="get">
+                            <form th:action="@{/breeze/{WhisperId}(WhisperId=${Whisper.WhisperId})}" method="get">
                                 <th>
                                     <span
                                         th:text="${Whisper.name}"
@@ -45,16 +45,12 @@
                                 </td>
                                 <td>
                                     <!-- TODO style -->
-                                    <!-- TODO check get path -->
-                                     <!-- @{/albums/{albumId}(albumId=${album.albumId})} -->
-                                    <form th:action="@{/breeze/{WhisperId}(WhisperId=${Whisper.WhisperId})}" method="get">
                                         <button
                                             type="submit"
                                             th:if="${#strings.length(Whisper.text) >= 150}"
                                         >
                                             続きを見る
                                         </button>
-                                    </form>
                                 </td>
                             </form>
                         </tr>
