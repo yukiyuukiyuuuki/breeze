@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head(ログイン)}">
-</head>
-    <body> 
-      <div th:replace="~{layout :: header}"></div>
-        <div id="parent">
-            <div id="child1">
-                <button onclick="history.back()" id="button_back">←back</button>
-            </div>
-            <div id="child2">
-                <form th:action="@{/breeze/whisper}" th:object="${whisperForm}" method="post">
-                    <div>
-                        <label for="whisper">投稿する内容を入力（500文字以内）</label><br>
-                        <textarea name="whisper" id="textarea" th:field="*{text}"></textarea>
 
-                    </div>
-                    <input type="radio" name="anonymous" value="true" th:field="*{anonymous}"> 名前を公開する<br>
-                    <input type="radio" name="anonymous" value="false" th:field="*{anonymous}"> 名前を公開しない<br>
+<head th:replace="~{layout :: head(Whisper)}">
+</head>
+
+<body>
+    <div th:replace="~{layout :: header}"></div>
+
+    <div id="parent">
+        <div id="child1">
+            <button onclick="history.back()" id="button_back">←back</button>
+        </div>
+        <div id="child2">
+            <form th:action="@{/breeze/whisper}" th:object="${whisperForm}" method="post">
+                <div>
+                    <label for="whisper">投稿する内容を入力（500文字以内）</label><br>
+                    <textarea name="whisper" id="textarea" th:field="*{text}"></textarea>
+                </div>
+                <input type="radio" name="anonymous" value="true" th:field="*{anonymous}"> 名前を公開する<br>
+                <input type="radio" name="anonymous" value="false" th:field="*{anonymous}"> 名前を公開しない<br>
                 <button type="submit" id="button">Whisper🖋</button>
             </form>
         </div>
-
     </div>
+
+    <div th:replace="~{layout :: footer}"></div>
 </body>
 
 </html>
