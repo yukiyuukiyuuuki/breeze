@@ -1,77 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout :: head(ログイン)}">
-    </head>
-    <style>
-        #child1 {
-            background-color: lightblue;
-            padding: 10px; /* ボタンの周りに少し余白 */
-            text-align: center; /* ボタンを中央に配置 */
-        }
-        #child2 {
-            background-color: lightgreen;
-        }
-        #child3 {
-            bottom: 0; /* 下端に配置 */
-            background-color: red; /* 背景色（任意で変更） */
-            padding: 10px; /* ボタンの周りに少し余白 */
-            text-align: center; /* ボタンを中央に配置 */
-        }
-        button {
-            padding: 10px;
-        }
 
-        @media (min-width: 600px) {
-            #parent {
-                display: flex;
-            }
-            #child1 {
-                flex-grow: 1;
-            }
-            #child2 {
-                flex-grow: 13;
-            }
-            #child3 {
-                flex-grow: 1;
-            }
-        }
-        @media (min-width: 600px) {
-            table {
-                width: 100%;
-            }
-            th, td {
-                display: block;
-                text-align: left;
-                width: 100%;
-            }
-        }
-    </style>
-    <body>
-        <div id="parent">
-            <div id="child1">
-                <!-- TODO  issue  -->
-                <form th:action="@{/login}" method="get"></form>
-                    <div>
-                        <button type="submit">ログイン</button>
-                    </div>
-                </form>
-            </div>
-            <div id="child2">
-                <table  class="whisper">
-                    <tbody>
-                        <tr>
+<head th:replace="~{layout :: head(長文whisper表示)}">
+    <link rel="stylesheet" href="../../static/css/style.css">
+</head>
+
+<body>
+    <div th:replace="~{layout :: header}"></div>
+
+    <div id="parent">
+        <div id="child1">
+            <form th:action="@{/login}" method="get">
+                <button type="submit" id="button">ログイン</button>
+            </form>
+        </div>
+        <div id="child2">
+            <table id="th">
+                <tbody>
+                    <tr>
                         <th>
-                            ・<span th:text="${Whisper.userName}">Whisperer</span> 
+                            ・<span th:text="${Whisper.userName}">Whisperer</span>
                             <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
                         </th>
                         <td><span th:text="${Whisper.text}">text</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id="child3">
-                <button onclick="history.back()">←back</button>
-            </div>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </body>
+        <div id="child3">
+            <button onclick="history.back()" id="button_back">back<br>←</button>
+        </div>
+    </div>
+
+    <div th:replace="~{layout :: footer}"></div>
+</body>
+
 </html>
