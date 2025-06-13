@@ -7,7 +7,7 @@ VALUES
   );
 
 INSERT INTO
-  whisper (text, anonymous)
+  whisper (user_id, text, anonymous)
 VALUES
-  ('Hello World',  'TRUE'),
-  ('Sample', 'FALSE');
+  (1, 'hello', true),
+  (1, 'world', false);
