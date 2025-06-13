@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="~{layout :: head(ログイン)}"></head>
-
-<body>
-    <div th:replace="~{layout :: header}"></div>
-    
-    <div id="parent">
-        <div id="child1">
-            <form th:action="@{/login}" method="get"><button type="submit" id="button">ログイン</button></form>
-        </div>
-        <div id="child2">
-            <table id="th">
-                <tbody>
-                    <tr th:each="Whisper : ${whispers}">
-                        <th>
-                            ・<span th:text="${Whisper.userName}">Whisperer</span>
-                            <span th:text="${Whisper.postDate}">yyyy-MM-dd</span>
-                        </th>
-                        <td><span th:text="${Whisper.text}">text</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="child3">
-            <form th:action="@{/breeze/whisper}" method="get"></form>
-            <div>
-                <button type="submit" id="button">新規投稿🖋</button>
+    <body>
+        <div th:replace="~{layout :: header}"></div>
+        <div id="parent">
+            <div id="child1">
+            <!--ログアウトしているときに表示-->
+            <form sec:authorize="isAnonymous()" th:action="@{/login}" method="get"><button type="submit" id="button">ログイン</button></form>
+            <!--ログインしているときに表示-->
+              <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post"><button type="submit" id="button">ログアウト</button></form>
             </div>
-            </form>
+            <div id="child2">
+                <table id="th">
+                    <tbody>
+                        <tr th:each="Whisper : ${whispers}">
+                            <th>
+                                <span th:text="${Whisper.userName}"
+                                    >Whisperer</span
+                                >
+                                <span th:text="${Whisper.postDate}"
+                                    >yyyy-MM-dd</span
+                                >
+                            </th>
+                            <td><span th:text="${Whisper.text}">text</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--ログインしているのみ表示-->
+            <div sec:authorize="isAuthenticated()" id="child3">
+                <form th:action="@{/breeze/whisper}" method="get">
+                    <div>
+                        <button type="submit" id="button">新規投稿🖋</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-
-    <div th:replace="~{layout :: footer}"></div>
-</body>
-
+        <div th:replace="~{layout :: footer}"></div>
+    </body>
 </html>

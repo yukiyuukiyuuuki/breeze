@@ -9,7 +9,7 @@ public class WhisperViewModel {
     private long WhisperId;
     private String userName;
     private String text;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime postDate;
     private boolean anonymous;
 }
