@@ -6,6 +6,8 @@ import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
 import com.example.breeze.db.repository.WhisperRepository;
 
 import org.springframework.stereotype.Service;
+
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -16,7 +18,16 @@ public class WhisperService {
   }
 
   public List<WhisperViewModel> getAllwhispers() {
-    return whisperRepository.selectAllWhispers();
+    List<WhisperViewModel> whispers = whisperRepository.selectAllWhispers();
+    List<WhisperViewModel> buffer = new LinkedList<>();
+    for (WhisperViewModel whisper : whispers) {
+      String text = whisper.getText();
+      if (text.length() >= 150) {
+        whisper.setText(text.substring(0, 150) + "...");
+      }
+      buffer.add(whisper);
+    }
+    return buffer;
   }
 
   public void insertwhisper(WhisperForm whisperForm, long userId) {
