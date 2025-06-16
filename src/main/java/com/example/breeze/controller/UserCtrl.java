@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserCtrl {
     private final UserService userService;
+    private final WhisperRepository whisperService;
 
-    public UserCtrl(UserService userService) {
+    public UserCtrl(UserService userService, WhisperRepository whisperService) {
         this.userService = userService;
+        this.whisperService = whisperService;
     }
 
     @GetMapping("/check-delete")
@@ -28,9 +30,11 @@ public class UserCtrl {
         // get current user id
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long userId = ((CustomUserDetails) principal).getUserId();
+        whisperService.deleteWhisperByUserId(userId);
+        // whisperService.removeUserId(userId);
         userService.deleteUserById(userId);
-
-        return "redirect:/breeze";
+        
+        return "redirect:/logout";
     }
 
 }

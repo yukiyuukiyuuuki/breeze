@@ -3,10 +3,12 @@ package com.example.breeze.db.mapper;
 import com.example.breeze.dataformat.entity.Whisper;
 import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -32,4 +34,9 @@ public interface WhisperMapper {
   @Options(useGeneratedKeys = true, keyProperty = "whisperId")
   void insertWhisper(Whisper whisper);
 
+  @Delete("DELETE FROM whisper WHERE user_id = #{userId}")
+  void deleteWhisperByUserId(long userId);
+
+  @Update("UPDATE whisper SET user_id = NULL where user_id = #{userId}")
+  void removeUserId(long userId);
 }
