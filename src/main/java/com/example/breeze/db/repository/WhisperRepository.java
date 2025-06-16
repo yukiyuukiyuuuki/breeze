@@ -24,4 +24,11 @@ public class WhisperRepository {
     whisperMapper.insertWhisper(whisper);
   }
 
+  public void deleteWhisperByUserId(long userId) {
+    whisperMapper.deleteWhisperByUserId(userId);
+  }
+
+  public void removeUserId(long userId) {
+    whisperMapper.removeUserId(userId);
+  };
 }
