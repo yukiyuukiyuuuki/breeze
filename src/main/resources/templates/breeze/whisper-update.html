@@ -39,6 +39,11 @@
                     ><br />
                     <button type="submit" id="button">ReWhisper🖋</button>
                 </form>
+                <form th:action="@{/breeze/edit/{whisperId}/delete(whisperId=${whisper.whisperId})}" method="post">
+                <div>
+                    <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
+                </div>
+                </form>
             </div>
         </div>
 

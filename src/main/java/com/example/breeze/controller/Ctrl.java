@@ -84,4 +84,10 @@ public class Ctrl {
 
     return "redirect:/breeze";
   }
+
+  @PostMapping("edit/{whisperId}/delete")
+  public String deleteWhisper(@PathVariable long whisperId) {
+    whisperService.deleteWhisper(whisperId);
+    return "redirect:/breeze";
+  }
 }
