@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout :: head(長文whisper表示)}">
+    <head th:replace="~{layout :: head(breeze【長文whisper表示】)}">
         <link rel="stylesheet" href="../../static/css/style.css" />
     </head>
 
@@ -24,7 +24,9 @@
                                     >yyyy-MM-dd</span
                                 >
                             </th>
-                            <td id="time-line"><span th:text="${whisper.text}">text</span></td>
+                            <td id="time-line">
+                                <span th:text="${whisper.text}">text</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
