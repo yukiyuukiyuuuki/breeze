@@ -41,4 +41,12 @@ public class WhisperService {
   public WhisperViewModel getwhisperById(long whisperId) {
     return whisperRepository.selectWhisperById(whisperId);
   }
+
+  public void updateWhisper(WhisperForm whisperForm, long whisperId) {
+    Whisper whisper = new Whisper();
+    whisper.setText(whisperForm.getText());
+    whisper.setAnonymous(whisperForm.getAnonymous());
+    whisper.setWhisperId(whisperId);
+    whisperRepository.updateWhisper(whisper);
+  }
 }
