@@ -12,6 +12,9 @@
                 <button onclick="history.back()" id="button_back">
                     back<br />←
                 </button>
+                <form th:action="@{/breeze}" method="get">
+                    <button type="submit" id="button">タイムライン</button>
+                </form>
             </div>
             <div id="child2">
                 <h1 id="title">Login</h1>
