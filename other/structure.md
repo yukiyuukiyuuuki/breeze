@@ -1,9 +1,10 @@
 # Class
+
 ```mermaid
 classDiagram
     class UserService {
-        +getUserById(long) User
         +createdUser(UserForm) void
+        +getUserById(long) User
         +deleteUserById(long) void
     }
     class User {
@@ -21,7 +22,7 @@ classDiagram
     class UserMapper {
         <<interface>>
         +selectUserById(long) User
-        +selectUserByname(String) User
+        +selectUserByUsername(String) User
         +insertUser(User) void
         +deleteUser(long) void
     }
@@ -31,7 +32,7 @@ classDiagram
     }
     class WhisperService {
         +WhisperRepository WhisperRepository
-        +getAllWhispers() List<Whisper>
+        +getAllWhispers() List<WhisperViewModel>
         +insertWhisper(WhisperForm) void
         +getWhisperById(long) WhisperViewModel
     }
@@ -49,37 +50,77 @@ classDiagram
     }
     class WhisperMapper {
         <<interface>>
-        +selectAllWhisper() List<WhisperViewModel>
+        +selectAllWhispers() List<WhisperViewModel>
         +selectWhisperById(long) WhisperViewModel
         +insertWhisper(Whisper) void
     }
     class WhisperForm {
         -text String
+        -anonymous Boolean
+    }
+    class WhisperViewModel {
+        -userId long
+        -whisperId long
+        -userName String
+        -text String
+        -postDate LocalDateTime
         -anonymous boolean
     }
+
+    class CustomUserDetails {
+        +getAuthorities() Collection<? extends GrantedAuthority>
+        +getPassword() String
+        +getUsername() String
+        +getUserId() long
+    }
+    class CustomUserDetailsService {
+        +loadUserDetailsService(String) UserDetails
+    }
+    class SecurityConfig {
+        +securityFilterChain(HttpSecurity) SecurityFilterChain
+        +passwordEncoder() PasswordEncoder
+    }
+
     class Ctrl {
-        +login() String
         +timeLine(Model) String
         +whisperForm(Model) String
         +whisper(WhisperForm) String
-        +longview(long) String
+        +longview(long, Model) String
+    }
+    class LoginCtrl{
+        +login() String
+    }
+    class RegistrationController{
+        +showRegistrationForm(Model) String
+        +registerUser(UserForm) String
     }
 
-    User --> UserService
+    User --> UserRepository
     UserMapper --> UserService
     UserRepository --> UserMapper
     UserForm --> UserService
-    Whisper --> WhisperService
+    CustomUserDetails --> User
+    CustomUserDetailsService --> UserRepository
+    SecurityConfig --> CustomUserDetailsService
+    Whisper --> WhisperRepository
     WhisperMapper --> WhisperService
     WhisperRepository --> WhisperMapper
     WhisperForm --> WhisperService
+    WhisperViewModel --> WhisperService
     UserService --> Ctrl
+    LoginCtrl --> Ctrl
+    RegistrationController --> Ctrl
     WhisperService --> Ctrl
+
+
+
 ```
+
 # ER
+
 ```mermaid
 erDiagram
-    user {
+    users {
         long user_id PK
         string name
         string password
@@ -92,5 +133,5 @@ erDiagram
         datetime post_date
         boolean anonymous
     }
-    user ||--o{ whisper  :"posts"
+    users ||--o{ whisper  :"posts"
 ```
