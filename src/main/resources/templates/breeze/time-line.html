@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout :: head(ログイン)}"></head>
+    <head th:replace="~{layout :: head(breeze)}"></head>
     <body>
         <div th:replace="~{layout :: header}"></div>
         <div id="parent">
@@ -26,7 +26,7 @@
                     th:action="@{/check-delete}"
                     method="get"
                 >
-                    <button type="submit" id="button">退会</button>
+                    <button type="submit" id="button">退  会</button>
                 </form>
             </div>
             <div id="child2">
@@ -34,41 +34,38 @@
                     <tbody>
                         <tr th:each="Whisper : ${whispers}">
                             <!-- TODO 長文レビューに推移できるようにする -->
-                            <form
-                                th:action="@{/breeze/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
-                                method="get"
-                            >
-                                <th>
-                                    <span
-                                        th:text="${Whisper.name}"
-                                        th:unless="${Whisper.anonymous}"
-                                    ></span>
-                                    <span th:if="${Whisper.anonymous}"
-                                        >Whisperer</span
-                                    >
-                                    <span th:text="${Whisper.postDate}"
-                                        >yyyy-MM-dd</span
-                                    >
-                                    <button
-                                        type="submit"
-                                        th:if="${userId == Whisper.userId}"
-                                    >
-                                        編集
-                                    </button>
-                                </th>
-                                <td>
-                                    <span th:text="${Whisper.text}">text</span>
-                                </td>
-                                <td>
-                                    <!-- TODO style -->
-                                    <button
-                                        type="submit"
-                                        th:if="${#strings.length(Whisper.text) >= 150}"
-                                    >
-                                        続きを見る
-                                    </button>
-                                </td>
-                            </form>
+                            <th>
+                                <span
+                                    th:text="${Whisper.name}"
+                                    th:unless="${Whisper.anonymous}"
+                                ></span>
+                                <span th:if="${Whisper.anonymous}"
+                                    >Whisperer</span
+                                >
+                                <span th:text="${Whisper.postDate}"
+                                    >yyyy-MM-dd</span
+                                >
+                                <a
+                                    th:href="@{/breeze/edit/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
+                                    th:if="${#strings.length(Whisper.text) >= 150}"
+                                    id="time-line-more"
+                                >
+                                    編集
+                                </a>
+                            </th>
+                            <td id="time-line">
+                                <span th:text="${Whisper.text}">text</span>
+                            </td>
+                            <td>
+                                <!-- TODO style -->
+                                <a
+                                    th:href="@{/breeze/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
+                                    th:if="${#strings.length(Whisper.text) >= 150}"
+                                    id="time-line-more"
+                                >
+                                    続きを見る
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

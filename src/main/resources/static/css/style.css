@@ -76,7 +76,8 @@ label {
 #button {
     position: relative;
     display: inline-block;
-    padding: 15px 30px;
+    width: 160px;
+    height: 60px;
     margin: 20px 0;
     text-decoration: none;
     color: #FFF;
@@ -100,7 +101,8 @@ label {
 #button_back {
     position: relative;
     display: inline-block;
-    padding: 30px;
+    width: 160px;
+    height: 100px;
     margin: 20px 0;
     text-decoration: none;
     color: #8a0b8c;
@@ -119,6 +121,26 @@ label {
     color: #ffffff;
     background: #8a0b8c;/*背景色*/
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+#time-line {
+    line-break: anywhere;
+}
+
+#time-line-more {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.1em 0.3em;
+  text-decoration: none;
+  color: #1842de;
+  background: #ececec;
+  transition: .4s;
+}
+
+#time-line-more:hover {
+  background: #1842de;
+  color: white;
 }
 
 textarea {
