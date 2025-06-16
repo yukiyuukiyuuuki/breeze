@@ -27,6 +27,7 @@
                     method="get"
                 >
                     <button type="submit" id="button">退 会</button>
+
                 </form>
             </div>
             <div id="child2">
@@ -58,6 +59,7 @@
                                 <!-- TODO style -->
                                 <a
                                     th:href="@{/breeze/view/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
+
                                     th:if="${#strings.length(Whisper.text) >= 150}"
                                     id="time-line-more"
                                 >
