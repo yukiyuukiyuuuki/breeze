@@ -49,7 +49,7 @@ public class Ctrl {
   ) {
     // get current user id
     Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    long userId = ((CustomUserDetails)principal).getUserId();
+    long userId = ((CustomUserDetails) principal).getUserId();
     whisperService.insertwhisper(whisperForm, userId);
 
     // List<Album> albums = albumService.getAllAlbums();
@@ -59,10 +59,28 @@ public class Ctrl {
     return "redirect:/breeze";
   }
 
-  @GetMapping("/{whisperId}")
+  @GetMapping("/view/{whisperId}")
   public String longview(@PathVariable long whisperId, Model model) {
     WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
     model.addAttribute("whisper", whisper);
     return "breeze/preview-long";
+  }
+
+  @GetMapping("/edit/{whisperId}")
+  public String editview(@PathVariable long whisperId, Model model) {
+    WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
+    WhisperForm whisperForm = new WhisperForm();
+    model.addAttribute("whisper", whisper);
+    model.addAttribute("whisperForm", whisperForm);
+    return "breeze/whisper-update";
+  }
+
+  @PostMapping("/edit/{whisperId}")
+  public String edit(@PathVariable long whisperId, WhisperForm whisperForm // , Model model
+  ) {
+    // get current user id
+    whisperService.updateWhisper(whisperForm, whisperId);
+
+    return "redirect:/breeze";
   }
 }

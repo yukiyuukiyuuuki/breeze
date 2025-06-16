@@ -19,6 +19,7 @@ public interface WhisperMapper {
       SELECT users.user_id, whisper.whisper_id, users.name, whisper.text, whisper.post_date, whisper.anonymous
       FROM whisper
       JOIN users ON whisper.user_id = users.user_id
+      ORDER BY post_date DESC
       """)
   public List<WhisperViewModel> selectAllWhispers();
 
@@ -39,4 +40,7 @@ public interface WhisperMapper {
 
   @Update("UPDATE whisper SET user_id = NULL where user_id = #{userId}")
   void removeUserId(long userId);
+
+  @Update("UPDATE whisper SET text = #{text} , anonymous = #{anonymous} where whisper_id = #{whisperId}")
+  void updateWhisper(Whisper whisper);
 }

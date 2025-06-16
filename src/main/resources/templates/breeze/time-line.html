@@ -26,14 +26,14 @@
                     th:action="@{/check-delete}"
                     method="get"
                 >
-                    <button type="submit" id="button">退  会</button>
+                    <button type="submit" id="button">退 会</button>
+
                 </form>
             </div>
             <div id="child2">
                 <table id="th">
                     <tbody>
                         <tr th:each="Whisper : ${whispers}">
-                            <!-- TODO 長文レビューに推移できるようにする -->
                             <th>
                                 <span
                                     th:text="${Whisper.name}"
@@ -47,7 +47,6 @@
                                 >
                                 <a
                                     th:href="@{/breeze/edit/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
-                                    th:if="${#strings.length(Whisper.text) >= 150}"
                                     id="time-line-more"
                                 >
                                     編集
@@ -59,7 +58,8 @@
                             <td>
                                 <!-- TODO style -->
                                 <a
-                                    th:href="@{/breeze/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
+                                    th:href="@{/breeze/view/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
+
                                     th:if="${#strings.length(Whisper.text) >= 150}"
                                     id="time-line-more"
                                 >
