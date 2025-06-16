@@ -49,7 +49,7 @@ public class Ctrl {
   ) {
     // get current user id
     Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    long userId = ((CustomUserDetails)principal).getUserId();
+    long userId = ((CustomUserDetails) principal).getUserId();
     whisperService.insertwhisper(whisperForm, userId);
 
     // List<Album> albums = albumService.getAllAlbums();
@@ -59,7 +59,7 @@ public class Ctrl {
     return "redirect:/breeze";
   }
 
-  @GetMapping("/{whisperId}")
+  @GetMapping("/view/{whisperId}")
   public String longview(@PathVariable long whisperId, Model model) {
     WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
     model.addAttribute("whisper", whisper);

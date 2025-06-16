@@ -35,7 +35,7 @@
                         <tr th:each="Whisper : ${whispers}">
                             <!-- TODO 長文レビューに推移できるようにする -->
                             <form
-                                th:action="@{/breeze/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
+                                th:action="@{/breeze/view/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
                                 method="get"
                             >
                                 <th>
