@@ -76,7 +76,7 @@ label {
 #button {
     position: relative;
     display: inline-block;
-    padding: 15px 40px;
+    padding: 15px 30px;
     margin: 20px 0;
     text-decoration: none;
     color: #FFF;
@@ -100,7 +100,7 @@ label {
 #button_back {
     position: relative;
     display: inline-block;
-    padding: 40px;
+    padding: 30px;
     margin: 20px 0;
     text-decoration: none;
     color: #8a0b8c;
@@ -148,7 +148,7 @@ textarea {
         flex-grow: 1;
     }
     #child2 {
-        flex-grow: 10;
+        flex-grow: 8;
     }
     #child3 {
         flex-grow: 1;
