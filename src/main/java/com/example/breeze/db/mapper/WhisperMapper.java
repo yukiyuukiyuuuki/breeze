@@ -40,4 +40,7 @@ public interface WhisperMapper {
 
   @Update("UPDATE whisper SET user_id = NULL where user_id = #{userId}")
   void removeUserId(long userId);
+
+  @Update("UPDATE whisper SET text = #{text} , anonymous = #{anonymous} where whisper_id = #{whisperId}")
+  void updateWhisper(Whisper whisper);
 }
