@@ -24,6 +24,10 @@ public class SecurityConfig {
             .loginPage("/login")
             .defaultSuccessUrl("/breeze", true) // ログインに成功したらtime-lineに戻す
             .failureUrl("/login?error")
+            .permitAll())
+        .logout(logout -> logout
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/login")
             .permitAll());
     return http.build();
   }
