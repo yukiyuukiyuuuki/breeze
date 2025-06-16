@@ -11,7 +11,7 @@
             </div>
             <div id="child2">
                 <form
-                    th:action="@{/breeze/whisper}"
+                    th:action="@{/breeze/edit/{whisperId}(whisperId=${whisper.whisperId})}"
                     th:object="${whisperForm}"
                     method="post"
                 >
@@ -22,7 +22,7 @@
                         <textarea
                             name="whisper"
                             id="textarea"
-                            th:text="*{text}"
+                            th:text="${whisper.text}"
                             th:field="*{text}"
                         ></textarea>
                     </div>
@@ -33,7 +33,7 @@
                     <label for="whisper" id="check-box">
                         <input
                             type="checkbox"
-                            th:value="*{anonymous}"
+                            th:value="${whisper.anonymous}"
                             th:field="*{anonymous}"
                         /><span>名前を公開しない</span> </label
                     ><br />
