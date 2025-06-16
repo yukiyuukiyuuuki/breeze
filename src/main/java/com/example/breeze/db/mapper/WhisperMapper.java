@@ -19,6 +19,7 @@ public interface WhisperMapper {
       SELECT users.user_id, whisper.whisper_id, users.name, whisper.text, whisper.post_date, whisper.anonymous
       FROM whisper
       JOIN users ON whisper.user_id = users.user_id
+      ORDER BY post_date DESC
       """)
   public List<WhisperViewModel> selectAllWhispers();
 
