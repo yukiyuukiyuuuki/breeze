@@ -47,6 +47,7 @@
                                 >
                                 <a
                                     th:href="@{/breeze/edit/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
+                                    th:if="${Whisper.userId == userId}"
                                     id="time-line-more"
                                 >
                                     編集

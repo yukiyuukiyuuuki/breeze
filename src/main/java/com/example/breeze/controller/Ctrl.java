@@ -30,10 +30,11 @@ public class Ctrl {
 
   @GetMapping
   public String timeLine(Model model) {
-    // List<Album> albums = albumService.getAllAlbums();
-
+    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    long userId = ((CustomUserDetails) principal).getUserId();
     List<WhisperViewModel> whispers = whisperService.getAllwhispers();
     model.addAttribute("whispers", whispers);
+    model.addAttribute("userId", userId);
     return "breeze/time-line";
   }
 
