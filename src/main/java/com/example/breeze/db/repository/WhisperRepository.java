@@ -35,4 +35,8 @@ public class WhisperRepository {
   public void updateWhisper(Whisper whisper) {
     whisperMapper.updateWhisper(whisper);
   }
+
+  public void deleteWhisper(long WhisperId) {
+    whisperMapper.deleteWhisper(WhisperId);
+  }
 }

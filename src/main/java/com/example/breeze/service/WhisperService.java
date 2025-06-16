@@ -49,4 +49,8 @@ public class WhisperService {
     whisper.setWhisperId(whisperId);
     whisperRepository.updateWhisper(whisper);
   }
+
+  public void deleteWhisper(long whisperId) {
+    whisperRepository.deleteWhisper(whisperId);
+  }
 }
