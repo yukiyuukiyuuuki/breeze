@@ -23,6 +23,13 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public String registerUser(UserForm userform) {
+        String name = userform.getName().trim();
+        String pass = userform.getPassword().trim();
+        if (name.isEmpty() || pass.isEmpty()) {
+            return "redirect:/register?invalid";
+        } else if (userService.checkUserAlreadyExist(name)) {
+            return "redirect:/register?exist";
+        }
         userService.createdUser(userform);
         return "redirect:/login?register";
     }
