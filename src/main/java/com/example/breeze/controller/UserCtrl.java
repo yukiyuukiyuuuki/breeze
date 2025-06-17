@@ -23,7 +23,7 @@ public class UserCtrl {
 
     @GetMapping("/check-delete")
     public String userDeleteForm() {
-        return "/check-delete";
+        return "check-delete";
     }
 
     @PostMapping("/check-delete")
