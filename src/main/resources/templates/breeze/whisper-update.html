@@ -11,7 +11,7 @@
             </div>
             <div id="child2">
                 <form
-                    th:action="@{/breeze/edit/{whisperId}(whisperId=${whisper.whisperId})}"
+                    th:action="@{/breeze/edit/{whisperId}(whisperId=${whisperId})}"
                     th:object="${whisperForm}"
                     method="post"
                 >
@@ -22,23 +22,29 @@
                         <textarea
                             name="whisper"
                             id="textarea"
-                            th:text="${whisper.text}"
                             th:field="*{text}"
                         ></textarea>
                     </div>
                     <label for="whisper" id="check-box">
-                        <input
-                            type="checkbox"
-                            th:value="${whisper.anonymous}"
-                            th:field="*{anonymous}"
-                        /><span>名前を公開しない</span> </label
+                        <input type="checkbox" th:field="*{anonymous}" /><span
+                            >名前を公開しない</span
+                        > </label
                     ><br />
                     <button type="submit" id="button">ReWhisper🖋</button>
                 </form>
-                <form th:action="@{/breeze/edit/{whisperId}/delete(whisperId=${whisper.whisperId})}" method="post">
-                <div>
-                    <button type="submit" onclick="return confirm('本当に削除しますか？');" id="remove_button">削除</button>
-                </div>
+                <form
+                    th:action="@{/breeze/edit/{whisperId}/delete(whisperId=${whisperId})}"
+                    method="post"
+                >
+                    <div>
+                        <button
+                            type="submit"
+                            onclick="return confirm('本当に削除しますか？');"
+                            id="remove_button"
+                        >
+                            削除
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
