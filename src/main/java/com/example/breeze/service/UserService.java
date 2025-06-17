@@ -31,4 +31,8 @@ public class UserService {
   public void deleteUserById(long UserId) {
     UserRepository.deleteUserById(UserId);
   }
+
+  public boolean checkUserAlreadyExist(String name) {
+    return UserRepository.checkUserAlreadyExist(name);
+  }
 }

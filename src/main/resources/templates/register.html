@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout :: head(ユーザ登録)}"></head>
+    <head th:replace="~{layout :: head(breeze【ユーザ登録】)}"></head>
     <body>
         <div th:replace="~{layout :: header}"></div>
         <div id="parent">
@@ -12,8 +12,11 @@
             <div id="child2">
                 <h2 id="footer">NEW USER</h2>
                 <h1 id="title">Welcome!</h1>
-                <div th:if="${param.error}" id="errorMsg">
-                    ユーザ名、またはパスワードが違います
+                <div th:if="${param.invalid}" id="errorMsg">
+                    ユーザ名、またはパスワードが無効です
+                </div>
+                <div th:if="${param.exist}" id="errorMsg">
+                    ユーザーが存在するため、他の名前を使用してください
                 </div>
                 <form
                     th:action="@{/register}"
