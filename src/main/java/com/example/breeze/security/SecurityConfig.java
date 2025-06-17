@@ -15,14 +15,14 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeHttpRequests(request -> request
-            .requestMatchers("/insert-user", "/breeze", "/login", "/register", "/css/**","/h2-console/**").permitAll() // ここで許可するパスを指定
+            .requestMatchers("/breeze", "/login", "/register", "/css/**","/h2-console/**").permitAll() // ここで許可するパスを指定
             .anyRequest().authenticated())
         .csrf(csrf -> csrf.disable())
         .headers(headers -> headers.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()))
         .formLogin(login -> login
             .loginProcessingUrl("/login")
             .loginPage("/login")
-            .defaultSuccessUrl("/breeze") // ログインに成功したらtime-lineに戻す
+            .defaultSuccessUrl("/breeze", true) // ログインに成功したらtime-lineに戻す
             .failureUrl("/login?error")
             .permitAll())
         .logout(logout -> logout
