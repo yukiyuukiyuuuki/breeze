@@ -12,6 +12,7 @@ import com.example.breeze.security.CustomUserDetails;
 import com.example.breeze.service.UserService;
 import com.example.breeze.service.WhisperService;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,11 +31,15 @@ public class Ctrl {
 
   @GetMapping
   public String timeLine(Model model) {
-    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    long userId = ((CustomUserDetails) principal).getUserId();
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    long userId = -1;
+    if (authentication != null && authentication.getPrincipal() instanceof CustomUserDetails) {
+      CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+      userId = customUserDetails.getUserId();
+    }
+    model.addAttribute("userId", userId);
     List<WhisperViewModel> whispers = whisperService.getAllwhispers();
     model.addAttribute("whispers", whispers);
-    model.addAttribute("userId", userId);
     return "breeze/time-line";
   }
 
