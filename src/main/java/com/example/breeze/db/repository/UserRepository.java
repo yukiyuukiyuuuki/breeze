@@ -28,4 +28,8 @@ public class UserRepository {
   public User selectUserByUsername(String username) {
     return userMapper.selectUserByUsername(username);
   }
+
+  public boolean checkUserAlreadyExist(String name) {
+    return userMapper.checkUserAlreadyExist(name);
+  }
 }

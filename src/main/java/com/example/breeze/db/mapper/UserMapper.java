@@ -23,4 +23,14 @@ public interface UserMapper {
   @Delete("DELETE FROM users WHERE user_id = #{userId}")
   void deleteUser(long userId);
 
+  @Select("""
+        SELECT
+        EXISTS (
+            SELECT 1
+            FROM users
+            WHERE name = #{name}
+        )
+      """)
+  boolean checkUserAlreadyExist(String name);
+
 }
