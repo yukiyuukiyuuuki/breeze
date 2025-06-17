@@ -31,4 +31,12 @@ public class WhisperRepository {
   public void removeUserId(long userId) {
     whisperMapper.removeUserId(userId);
   };
+
+  public void updateWhisper(Whisper whisper) {
+    whisperMapper.updateWhisper(whisper);
+  }
+
+  public void deleteWhisper(long WhisperId) {
+    whisperMapper.deleteWhisper(WhisperId);
+  }
 }

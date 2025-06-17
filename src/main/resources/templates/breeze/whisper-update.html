@@ -6,36 +6,40 @@
         <div th:replace="~{layout :: header}"></div>
 
         <div id="parent">
-        <div id="child1">
-            <button onclick="history.back()" id="button_back">←back</button>
-        </div>
-              <div id="child2">
+            <div id="child1">
+                <button onclick="history.back()" id="button_back">←back</button>
+            </div>
+            <div id="child2">
                 <form
-                    th:action="@{/breeze/whisper}"
+                    th:action="@{/breeze/edit/{whisperId}(whisperId=${whisper.whisperId})}"
                     th:object="${whisperForm}"
                     method="post"
                 >
-                  
-                <div>
-                    <label for="whisper"
-                        >編集する内容を入力（500文字以内）</label
+                    <div>
+                        <label for="whisper"
+                            >編集する内容を入力（500文字以内）</label
+                        ><br />
+                        <textarea
+                            name="whisper"
+                            id="textarea"
+                            th:text="${whisper.text}"
+                            th:field="*{text}"
+                        ></textarea>
+                    </div>
+                    <label for="whisper" id="check-box">
+                        <input
+                            type="checkbox"
+                            th:value="${whisper.anonymous}"
+                            th:field="*{anonymous}"
+                        /><span>名前を公開しない</span> </label
                     ><br />
-                    <textarea
-                        name="whisper"
-                        id="textarea"
-                        th:text="*{text}"
-                        th:field="*{text}"
-                    ></textarea>
+                    <button type="submit" id="button">ReWhisper🖋</button>
+                </form>
+                <form th:action="@{/breeze/edit/{whisperId}/delete(whisperId=${whisper.whisperId})}" method="post">
+                <div>
+                    <button type="submit" onclick="return confirm('本当に削除しますか？');" id="remove_button">削除</button>
                 </div>
-                <!--
-                <input type="radio" name="anonymous" value="true" th:field="*{anonymous}"> 名前を公開する<br>
-                <input type="radio" name="anonymous" value="false" th:field="*{anonymous}"> 名前を公開しない<br>
-                -->
-                <label for="whisper" id="check-box">
-                    <input type="checkbox" th:value="*{anonymous}" th:field="*{anonymous}"><span>名前を公開しない</span>
-                </label><br>
-                <button type="submit" id="button">ReWhisper🖋</button>
-            </form>
+                </form>
             </div>
         </div>
 

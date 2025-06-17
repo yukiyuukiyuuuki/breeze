@@ -9,18 +9,21 @@
 
         <div id="parent">
             <div id="child1">
+                </form>
                 <!--ログインしているときに表示-->
                 <form
+                    sec:authorize="isAuthenticated()"
                     th:action="@{/check-logout}"
                     method="get"
                 >
                     <button type="submit" id="button">ログアウト</button>
                 </form>
                 <form
+                    sec:authorize="isAuthenticated()"
                     th:action="@{/check-delete}"
                     method="get"
                 >
-                    <button type="submit" id="button">退  会</button>
+                    <button type="submit" id="button">退 会</button>
                 </form>
             </div>
             <div id="child2">
@@ -33,7 +36,9 @@
                                     >yyyy-MM-dd</span
                                 >
                             </th>
-                            <td id="time-line"><span th:text="${whisper.text}">text</span></td>
+                            <td id="time-line">
+                                <span th:text="${whisper.text}">text</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
