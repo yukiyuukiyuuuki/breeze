@@ -68,7 +68,9 @@ public class Ctrl {
   public String editview(@PathVariable long whisperId, Model model) {
     WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
     WhisperForm whisperForm = new WhisperForm();
-    model.addAttribute("whisper", whisper);
+    whisperForm.setText(whisper.getText());
+    whisperForm.setAnonymous(whisper.isAnonymous());
+    model.addAttribute("whisperId", whisper.getWhisperId());
     model.addAttribute("whisperForm", whisperForm);
     return "breeze/whisper-update";
   }
