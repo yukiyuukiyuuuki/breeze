@@ -9,9 +9,18 @@
 
         <div id="parent">
             <div id="child1">
-                <!-- TODO -->
-                <form th:action="@{/login}" method="get">
-                    <button type="submit" id="button">ログイン</button>
+                <!--ログインしているときに表示-->
+                <form
+                    th:action="@{/check-logout}"
+                    method="get"
+                >
+                    <button type="submit" id="button">ログアウト</button>
+                </form>
+                <form
+                    th:action="@{/check-delete}"
+                    method="get"
+                >
+                    <button type="submit" id="button">退  会</button>
                 </form>
             </div>
             <div id="child2">
