@@ -27,7 +27,6 @@
                     method="get"
                 >
                     <button type="submit" id="button">退 会</button>
-
                 </form>
             </div>
             <div id="child2">
@@ -38,11 +37,16 @@
                                 <span
                                     th:text="${Whisper.name}"
                                     th:unless="${Whisper.anonymous}"
+                                    class="author-name"
                                 ></span>
-                                <span th:if="${Whisper.anonymous}"
+                                <span
+                                    th:if="${Whisper.anonymous}"
+                                    class="anonymous-author"
                                     >Whisperer</span
                                 >
-                                <span th:text="${Whisper.dateTimeFormat}"
+                                <span
+                                    th:text="${Whisper.dateTimeFormat}"
+                                    class="date-time"
                                     >yyyy-MM-dd</span
                                 >
                                 <a
@@ -59,7 +63,6 @@
                             <td>
                                 <a
                                     th:href="@{/breeze/view/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
-
                                     th:if="${#strings.length(Whisper.text) >= 150}"
                                     id="time-line-more"
                                 >
