@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout :: head(breeze)}"></head>
+    <div th:if="${param.null}" style="color: red">
+        投稿は削除された可能性があります
+    </div>
     <body>
         <div th:replace="~{layout :: header}"></div>
         <div id="parent">
