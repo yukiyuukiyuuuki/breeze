@@ -41,11 +41,16 @@
                                 <span
                                     th:text="${whisper.name}"
                                     th:unless="${whisper.anonymous}"
+                                    class="author-name"
                                 ></span>
-                                <span th:if="${whisper.anonymous}"
+                                <span
+                                    th:if="${whisper.anonymous}"
+                                    class="anonymous-author"
                                     >Whisperer</span
                                 >
-                                <span th:text="${whisper.dateTimeFormat}"
+                                <span
+                                    th:text="${whisper.dateTimeFormat}"
+                                    class="date-time"
                                     >yyyy-MM-dd</span
                                 >
                             </th>
