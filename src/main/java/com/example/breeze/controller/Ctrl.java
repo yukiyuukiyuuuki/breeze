@@ -73,7 +73,7 @@ public class Ctrl {
   @PostMapping("/edit/{whisperId}")
   public String edit(@PathVariable long whisperId, WhisperForm whisperForm) {
     // get current user id
-    if (whisperService.getwhisperById(whisperId).getWhisperId() != userService.getCurrentUserId()) {
+    if (whisperService.getwhisperById(whisperId).getUserId() != userService.getCurrentUserId()) {
       return "redirect:/breeze";
     }
     whisperService.updateWhisper(whisperForm, whisperId);
@@ -83,7 +83,7 @@ public class Ctrl {
 
   @PostMapping("edit/{whisperId}/delete")
   public String deleteWhisper(@PathVariable long whisperId) {
-    if (whisperService.getwhisperById(whisperId).getWhisperId() != userService.getCurrentUserId()) {
+    if (whisperService.getwhisperById(whisperId).getUserId() != userService.getCurrentUserId()) {
       return "redirect:/breeze";
     }
     whisperService.deleteWhisper(whisperId);
