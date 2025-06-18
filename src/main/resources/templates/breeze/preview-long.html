@@ -38,8 +38,14 @@
                     <tbody>
                         <tr>
                             <th>
-                                <span th:text="${whisper.name}">Whisperer</span>
-                                <span th:text="${whisper.postDate}"
+                                <span
+                                    th:text="${whisper.name}"
+                                    th:unless="${whisper.anonymous}"
+                                ></span>
+                                <span th:if="${whisper.anonymous}"
+                                    >Whisperer</span
+                                >
+                                <span th:text="${whisper.dateTimeFormat}"
                                     >yyyy-MM-dd</span
                                 >
                             </th>

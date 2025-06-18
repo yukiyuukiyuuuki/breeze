@@ -7,12 +7,16 @@ import com.example.breeze.db.repository.WhisperRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.LinkedList;
 import java.util.List;
 
 @Service
 public class WhisperService {
   private final WhisperRepository whisperRepository;
+
   public WhisperService(WhisperRepository whisperRepository) {
     this.whisperRepository = whisperRepository;
   }
@@ -22,9 +26,11 @@ public class WhisperService {
     List<WhisperViewModel> buffer = new LinkedList<>();
     for (WhisperViewModel whisper : whispers) {
       String text = whisper.getText();
+
       if (text.length() >= 150) {
         whisper.setText(text.substring(0, 150) + "...");
       }
+      whisper.setDateTimeFormat(changeDatetimeFormat(whisper));
       buffer.add(whisper);
     }
     return buffer;
@@ -39,7 +45,9 @@ public class WhisperService {
   }
 
   public WhisperViewModel getwhisperById(long whisperId) {
-    return whisperRepository.selectWhisperById(whisperId);
+    WhisperViewModel whisper =  whisperRepository.selectWhisperById(whisperId);
+    whisper.setDateTimeFormat(changeDatetimeFormat(whisper));
+    return whisper;
   }
 
   public void updateWhisper(WhisperForm whisperForm, long whisperId) {
@@ -52,5 +60,23 @@ public class WhisperService {
 
   public void deleteWhisper(long whisperId) {
     whisperRepository.deleteWhisper(whisperId);
+  }
+
+  public static String changeDatetimeFormat(WhisperViewModel whisper) {
+    LocalDateTime now = LocalDateTime.now();
+    LocalDateTime postDate = whisper.getPostDate();
+
+    long yearsDiff = ChronoUnit.YEARS.between(postDate, now);
+    long daysDiff = ChronoUnit.DAYS.between(postDate, now);
+
+    String formattedDate;
+    if (yearsDiff == 0 && daysDiff == 0) {
+      formattedDate = postDate.format(DateTimeFormatter.ofPattern("HH:mm"));
+    } else if (yearsDiff == 0) {
+      formattedDate = postDate.format(DateTimeFormatter.ofPattern("MM-dd HH:mm"));
+    } else {
+      formattedDate = postDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
+    return formattedDate;
   }
 }

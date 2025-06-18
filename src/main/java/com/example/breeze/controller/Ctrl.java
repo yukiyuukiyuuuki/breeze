@@ -2,16 +2,14 @@ package com.example.breeze.controller;
 
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.breeze.dataformat.form.WhisperForm;
 import com.example.breeze.dataformat.viewmodel.WhisperViewModel;
-import com.example.breeze.security.CustomUserDetails;
+import com.example.breeze.service.UserService;
 import com.example.breeze.service.WhisperService;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,19 +19,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/breeze")
 public class Ctrl {
   private final WhisperService whisperService;
+  private final UserService userService;
 
-  public Ctrl(WhisperService whisperService) {
+  public Ctrl(WhisperService whisperService, UserService userService) {
     this.whisperService = whisperService;
+    this.userService = userService;
   }
 
   @GetMapping
   public String timeLine(Model model) {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    long userId = -1;
-    if (authentication != null && authentication.getPrincipal() instanceof CustomUserDetails) {
-      CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
-      userId = customUserDetails.getUserId();
-    }
+    long userId = userService.getCurrentUserId();
     model.addAttribute("userId", userId);
     List<WhisperViewModel> whispers = whisperService.getAllwhispers();
     model.addAttribute("whispers", whispers);
@@ -48,12 +43,9 @@ public class Ctrl {
   }
 
   @PostMapping("/whisper")
-  public String whisper(WhisperForm whisperForm
-  ) {
+  public String whisper(WhisperForm whisperForm) {
     // get current user id
-    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    long userId = ((CustomUserDetails) principal).getUserId();
-    whisperService.insertwhisper(whisperForm, userId);
+    whisperService.insertwhisper(whisperForm, userService.getCurrentUserId());
     return "redirect:/breeze";
   }
 
@@ -67,6 +59,9 @@ public class Ctrl {
   @GetMapping("/edit/{whisperId}")
   public String editview(@PathVariable long whisperId, Model model) {
     WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
+    if (userService.getCurrentUserId() != whisper.getUserId()) {
+      return "redirect:/breeze";
+    }
     WhisperForm whisperForm = new WhisperForm();
     whisperForm.setText(whisper.getText());
     whisperForm.setAnonymous(whisper.isAnonymous());
@@ -76,9 +71,11 @@ public class Ctrl {
   }
 
   @PostMapping("/edit/{whisperId}")
-  public String edit(@PathVariable long whisperId, WhisperForm whisperForm
-  ) {
+  public String edit(@PathVariable long whisperId, WhisperForm whisperForm) {
     // get current user id
+    if (whisperService.getwhisperById(whisperId).getWhisperId() != userService.getCurrentUserId()) {
+      return "redirect:/breeze";
+    }
     whisperService.updateWhisper(whisperForm, whisperId);
 
     return "redirect:/breeze";
@@ -86,7 +83,12 @@ public class Ctrl {
 
   @PostMapping("edit/{whisperId}/delete")
   public String deleteWhisper(@PathVariable long whisperId) {
+    if (whisperService.getwhisperById(whisperId).getWhisperId() != userService.getCurrentUserId()) {
+      return "redirect:/breeze";
+    }
     whisperService.deleteWhisper(whisperId);
     return "redirect:/breeze";
   }
+
+
 }

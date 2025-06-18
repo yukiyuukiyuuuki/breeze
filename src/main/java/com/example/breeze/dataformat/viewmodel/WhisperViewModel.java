@@ -12,4 +12,5 @@ public class WhisperViewModel {
     @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime postDate;
     private boolean anonymous;
+    private String  dateTimeFormat;
 }
