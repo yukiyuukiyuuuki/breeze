@@ -39,10 +39,10 @@
                         <tr>
                             <th>
                                 <span
-                                    th:text="${Whisper.name}"
-                                    th:unless="${Whisper.anonymous}"
+                                    th:text="${whisper.name}"
+                                    th:unless="${whisper.anonymous}"
                                 ></span>
-                                <span th:if="${Whisper.anonymous}"
+                                <span th:if="${whisper.anonymous}"
                                     >Whisperer</span
                                 >
                                 <span th:text="${whisper.dateTimeFormat}"
