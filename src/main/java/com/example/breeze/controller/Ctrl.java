@@ -51,7 +51,12 @@ public class Ctrl {
 
   @GetMapping("/view/{whisperId}")
   public String longview(@PathVariable long whisperId, Model model) {
-    WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
+    try {
+      WhisperViewModel whisper = whisperService.getwhisperById(whisperId);
+    } catch (NullPointerException e) {
+      System.err.println("accessed none page" + e);
+      return "redirect:/breeze?null";
+    }
     model.addAttribute("whisper", whisper);
     return "breeze/preview-long";
   }
