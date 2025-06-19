@@ -38,7 +38,9 @@
                     <tbody class="can-scroll">
                         <tr>
                             <th>
-                                <div th:replace="~{layout :: name(${whisper})}"></div>
+                                <div
+                                    th:replace="~{layout :: name(${whisper})}"
+                                ></div>
                             </th>
                             <td id="time-line">
                                 <span th:text="${whisper.text}">text</span>
@@ -48,9 +50,9 @@
                 </table>
             </div>
             <div id="child3">
-                <button onclick="history.back()" id="button_back">
-                    back<br />←
-                </button>
+                <form th:action="@{/breeze}" method="get">
+                    <button type="submit" id="button_back">back<br />←</button>
+                </form>
             </div>
         </div>
 
