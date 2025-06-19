@@ -37,21 +37,7 @@
                     <tbody class="can-scroll">
                         <tr th:each="Whisper : ${whispers}">
                             <th>
-                                <span
-                                    th:text="${Whisper.name}"
-                                    th:unless="${Whisper.anonymous}"
-                                    class="author-name"
-                                ></span>
-                                <span
-                                    th:if="${Whisper.anonymous}"
-                                    class="anonymous-author"
-                                    >Whisperer</span
-                                >
-                                <span
-                                    th:text="${Whisper.dateTimeFormat}"
-                                    class="date-time"
-                                    >yyyy-MM-dd</span
-                                >
+                                <div th:replace="~{layout :: name(${Whisper})}"></div>
                                 <a
                                     th:href="@{/breeze/edit/{WhisperId}(WhisperId=${Whisper.WhisperId})}"
                                     th:if="${Whisper.userId == userId}"

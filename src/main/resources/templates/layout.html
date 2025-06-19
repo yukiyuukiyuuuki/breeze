@@ -11,6 +11,22 @@
                 <h1 id="breeze">Breeze</h1>
             </header>
         </div>
+        <div th:fragment="name(Whisper)">
+            <span
+                th:text="${Whisper.name}"
+                th:unless="${Whisper.anonymous || Whisper.WhisperId == null}"
+                class="author-name"
+            ></span>
+            <span th:if="${Whisper.anonymous}" class="anonymous-author"
+                >Whisperer</span
+            >
+            <span th:if="${Whisper.WhisperId == null}" class="anonymous-author"
+                >Rumor</span
+            >
+            <span th:text="${Whisper.dateTimeFormat}" class="date-time"
+                >yyyy-MM-dd</span
+            >
+        </div>
         <div th:fragment="footer">
             <footer id="layout">
                 <h3 id="footer">&copy; Life Hackers</h3>
