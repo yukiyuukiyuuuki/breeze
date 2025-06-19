@@ -38,21 +38,7 @@
                     <tbody>
                         <tr>
                             <th>
-                                <span
-                                    th:text="${whisper.name}"
-                                    th:unless="${whisper.anonymous}"
-                                    class="author-name"
-                                ></span>
-                                <span
-                                    th:if="${whisper.anonymous}"
-                                    class="anonymous-author"
-                                    >Whisperer</span
-                                >
-                                <span
-                                    th:text="${whisper.dateTimeFormat}"
-                                    class="date-time"
-                                    >yyyy-MM-dd</span
-                                >
+                                <div th:replace="~{layout :: name(${whisper})}"></div>
                             </th>
                             <td id="time-line">
                                 <span th:text="${whisper.text}">text</span>
