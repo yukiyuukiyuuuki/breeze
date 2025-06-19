@@ -35,13 +35,10 @@
             </div>
             <div id="child2">
                 <table id="th">
-                    <tbody>
+                    <tbody class="can-scroll">
                         <tr>
                             <th>
-                                <span th:text="${whisper.name}">Whisperer</span>
-                                <span th:text="${whisper.postDate}"
-                                    >yyyy-MM-dd</span
-                                >
+                                <div th:replace="~{layout :: name(${whisper})}"></div>
                             </th>
                             <td id="time-line">
                                 <span th:text="${whisper.text}">text</span>
