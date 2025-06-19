@@ -85,7 +85,7 @@ public class Ctrl {
     String text = whisperForm.getText();
 
     if (text.length() > 10000 || text == null || text == "") {
-      return "redirect:/breeze/whisper?invalid";
+      return String.format("redirect:/breeze/edit/%d?invalid", whisperId);
     }
     if (whisperService.getwhisperById(whisperId).getUserId() != userService.getCurrentUserId()) {
       return "redirect:/breeze";

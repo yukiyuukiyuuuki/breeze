@@ -21,7 +21,7 @@
                         <label for="whisper"
                             >編集する内容を入力（約１万文字以内）</label
                         ><br />
-                        <div th:if="${param.null}" style="color: red">
+                        <div th:if="${param.invalid}" style="color: red">
                             <a>無効な投稿です</a>
                         </div>
                         <textarea
