@@ -5,18 +5,18 @@
         <div th:replace="~{layout :: header}"></div>
         <div id="parent">
             <div id="child1">
-                <button onclick="history.back()" id="button_back">
-                    back<br />←
-                </button>
+                <form th:action="@{/login}" method="get">
+                    <button type="submit" id="button_back">back<br />←</button>
+                </form>
             </div>
             <div id="child2">
                 <h2 id="footer">NEW USER</h2>
                 <h1 id="title">Welcome!</h1>
                 <div th:if="${param.invalid}" id="errorMsg">
-                    ユーザ名、またはパスワードが無効です
+                    <a>ユーザ名は10文字以内、パスワードは8文字以上50文字以内</a>
                 </div>
                 <div th:if="${param.exist}" id="errorMsg">
-                    ユーザーが存在するため、他の名前を使用してください
+                    <a>ユーザーが存在するため、他の名前を使用してください</a>
                 </div>
                 <form
                     th:action="@{/register}"

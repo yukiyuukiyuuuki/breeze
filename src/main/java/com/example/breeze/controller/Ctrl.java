@@ -44,7 +44,11 @@ public class Ctrl {
 
   @PostMapping("/whisper")
   public String whisper(WhisperForm whisperForm) {
-    // get current user id
+    String text = whisperForm.getText();
+    whisperForm.setText(text.trim());
+    if (text.length() > 10000 || text == null || text == "") {
+      return "redirect:/breeze/whisper?invalid";
+    }
     whisperService.insertwhisper(whisperForm, userService.getCurrentUserId());
     return "redirect:/breeze";
   }
@@ -78,9 +82,15 @@ public class Ctrl {
   @PostMapping("/edit/{whisperId}")
   public String edit(@PathVariable long whisperId, WhisperForm whisperForm) {
     // get current user id
+    String text = whisperForm.getText();
+
+    if (text.length() > 10000 || text == null || text == "") {
+      return "redirect:/breeze/whisper?invalid";
+    }
     if (whisperService.getwhisperById(whisperId).getUserId() != userService.getCurrentUserId()) {
       return "redirect:/breeze";
     }
+    whisperForm.setText(text.trim());
     whisperService.updateWhisper(whisperForm, whisperId);
 
     return "redirect:/breeze";
