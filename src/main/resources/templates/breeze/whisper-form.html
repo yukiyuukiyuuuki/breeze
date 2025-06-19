@@ -17,8 +17,11 @@
                 >
                     <div>
                         <label for="whisper"
-                            >投稿する内容を入力（500文字以内）</label
+                            >投稿する内容を入力（約１万文字以内）</label
                         ><br />
+                        <div th:if="${param.invalid}" style="color: red">
+                            <a>無効な投稿です</a>
+                        </div>
                         <textarea
                             name="whisper"
                             id="textarea"
@@ -26,9 +29,11 @@
                         ></textarea>
                     </div>
                     <label for="whisper" id="check-box">
-                        <input id="whisper" type="checkbox" th:field="*{anonymous}" /><span
-                            >名前を公開しない</span
-                        > </label
+                        <input
+                            id="whisper"
+                            type="checkbox"
+                            th:field="*{anonymous}"
+                        /><span>名前を公開しない</span> </label
                     ><br />
                     <button type="submit" id="button">Whisper🖋</button>
                 </form>

@@ -24,8 +24,10 @@ public class RegistrationController {
     @PostMapping("/register")
     public String registerUser(UserForm userform) {
         String name = userform.getName().trim();
-        String pass = userform.getPassword().trim();
-        if (name.isEmpty() || pass.isEmpty()) {
+        String pass = userform.getPassword()
+                .trim()
+                .replace(" ", "");
+        if (name.isEmpty() || pass.isEmpty() || name.length() > 20 || pass.length() <= 8 || pass.length() > 50) {
             return "redirect:/register?invalid";
         } else if (userService.checkUserAlreadyExist(name)) {
             return "redirect:/register?exist";
